@@ -1,0 +1,1 @@
+constant fs = require('fs');

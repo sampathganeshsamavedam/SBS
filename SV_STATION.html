@@ -4,95 +4,98 @@
 <head>
   <meta charset="utf-8">
   <title>SV station details</title>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+
 </head>
-
 <body>
-  <table cellspacing="25">
-    <thead>
-      <tr>
-        <td>
-          SV Stations
-        </td>
-        <td>
-          SV 09
-        </td>
-        <td>
-          SV 10
-        </td>
-        <td>
-          SV 11
-        </td>
-        <td>
-          SV 12
-        </td>
-        <td>
-          SV 13
-        </td>
-        <td>
-          SV 14
-        </td>
-        <td>
-          SV 15
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>
-          Address
-        <td>
-          <a href="https://goo.gl/maps/cU4o6orEQyG14Fa26"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/KhiAq5SJE4xkSCvFA"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/mrGQNsufHeQ4Zirz7"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/ZxrN6XdyEDcpkiAy8"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/c8wNbYEsWFmhSWm99"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/cef84kPAco2c3C466"> Map link </a>
-        </td>
-        <td>
-          <a href="https://goo.gl/maps/1Aj1VNhM6R9oJnZ17"> Map link </a>
-        </td>
-      </tr>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
-      <tr>
-        <td>
-          CONTACTS
-        </td>
-        <td>
-          <a href="sv_09.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_10.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_11.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_12.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_13.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_14.html">Click here</a>
-        </td>
-        <td>
-          <a href="sv_15.html">Click here</a>
-        </td>
+  <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 09
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/cU4o6orEQyG14Fa26">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_09">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_09rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 10
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/KhiAq5SJE4xkSCvFA">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_10">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_10rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 11
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/mrGQNsufHeQ4Zirz7">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_11">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_11rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 12
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/ZxrN6XdyEDcpkiAy8">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_12">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_12rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 13
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/c8wNbYEsWFmhSWm99">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_13">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_13rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 14
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/cef84kPAco2c3C466">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_14">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_14rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
+
+    <div class="btn-group" role="group">
+      <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      SV 15
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="https://goo.gl/maps/1Aj1VNhM6R9oJnZ17">Location</a></li>
+        <li><a class="dropdown-item" href="/sv_15">Contacts</a></li>
+        <li><a class="dropdown-item" href="/sv_15rc">Nearest road crossings</a></li>
+      </ul>
+    </div>
 
 
-    </tbody>
+  </div>
 
-  </table>
+
 
 
 

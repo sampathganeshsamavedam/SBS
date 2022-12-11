@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Road crossing Farmer details</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <form id="myFormId" action="index.html" method="post">
+      <input type="text" id="chainage-input" name="chainage" placeholder="Enter the Chainage">
+      <button type="submit" name="submit">Get details</button>
+    </form>
+<p id="chainage-details">Loading...</p> -->
+
+<!-- <script src="index.js"></script> -->
+<script>
+    document.forms['myFormId'].addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(document.getElementById('chainage-input').value)
+    fetch("/getFarmers?value="+document.getElementById('chainage-input').value, {
+        method: 'GET',
+    }).then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    }).then((body) => {
+        console.log(body)
+        let htmldata= '<ul class="rcbg">'
+        body.forEach((farmer)=>{
+          console.log(farmer)
+          htmldata += "<li>"+"<h4>Chainage:    "+farmer.Chainage+"</li>"
+          htmldata += "<li>"+"Road crossing name:     "+farmer.Road_crossing+"</li>"
+          htmldata += "<li>"+"Farmer name(Upstream):    "+farmer.Farmer_name_Upstream+"</li>"
+          htmldata += "<li>"+"Farmer contact(Upstream):   "+farmer.Farmer_contact_Upstream+"</li>"
+          htmldata += "<li>"+"Farmer name(Downstream):    "+farmer.Farmer_name_Downstream+"</li>"
+          htmldata += "<li>"+"Farmer contact(Downstream):    "+farmer.Farmer_contact_Downstream+"</li>"
+          htmldata += "<li>"+"Location:     "+farmer.Map_link+"</li>"
+          htmldata += "<br></br>"
+        })
+        htmldata +="</ul>"
+        document.getElementById('chainage-details').innerHTML=htmldata
+    }).catch((error) => {
+
+    });
+  });
+</script>
+  </body>
+</html>
