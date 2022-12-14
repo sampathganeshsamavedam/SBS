@@ -33,7 +33,7 @@ db.once("open", function () {
 
 const app = express();
 
-const constants = {defaultPassword:"Hpcl#2402",Chainagelimit:1}
+const constants = {defaultPassword:"Hpcl#2402",supPassword:"Hpcl#123",Chainagelimit:1}
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}))
@@ -63,6 +63,9 @@ app.post("/", function(req,res){
   console.log(email, password);
   if (password == constants.defaultPassword){
     res.sendFile(__dirname + "/index.html");
+  }
+  else if (password == constants.supPassword) {
+    res.sendFile(__dirname + "/ROU.html");
   }
   else {
     res.sendFile(__dirname + "/wrong.html")
@@ -173,6 +176,64 @@ res.sendFile(__dirname + "/Operations.html");
   app.get("/dec", function(req, res){
   res.sendFile(__dirname + "/dec.html");
   })
+
+app.get("/sv_09rc", function(req, res){
+res.sendFile(__dirname + "/sv_09rc.html");
+})
+
+app.get("/sv_10rc", function(req, res){
+res.sendFile(__dirname + "/sv_10rc.html");
+})
+
+app.get("/sv_11rc", function(req, res){
+res.sendFile(__dirname + "/sv_11rc.html");
+})
+
+app.get("/sv_12rc", function(req, res){
+res.sendFile(__dirname + "/sv_12rc.html");
+})
+
+app.get("/sv_13rc", function(req, res){
+res.sendFile(__dirname + "/sv_13rc.html");
+})
+
+app.get("/sv_14rc", function(req, res){
+res.sendFile(__dirname + "/sv_14rc.html");
+})
+
+app.get("/sv_15rc", function(req, res){
+res.sendFile(__dirname + "/sv_15rc.html");
+})
+
+app.get("/loginpage", function(req, res){
+res.sendFile(__dirname + "/loginpage.html");
+})
+
+app.get("/FAS", function(req, res){
+res.sendFile(__dirname + "/FAS.html");
+})
+
+app.get("/SV_STATION_home", function(req, res){
+res.sendFile(__dirname + "/SV_STATION_home.html");
+})
+
+
+app.get("/Instrumentation", function(req, res){
+res.sendFile(__dirname + "/Instrumentation.html");
+})
+
+app.get("/Electrical", function(req, res){
+res.sendFile(__dirname + "/Electrical.html");
+})
+
+app.get("/Telecom", function(req, res){
+res.sendFile(__dirname + "/Telecom.html");
+})
+
+app.get("/Purchase_orders", function(req, res){
+res.sendFile(__dirname + "/Purchase_orders.html");
+})
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });
