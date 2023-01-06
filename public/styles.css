@@ -11213,3 +11213,29 @@ img {
   background: rgb(0,14,255);
   background: linear-gradient(90deg, rgba(0,14,255,0.5889706224286589) 81%, rgba(0,31,254,0.30325633671437324) 90%);
 }
+
+
+.view {
+  margin: auto;
+  width: 700 px;
+}
+
+.wrapper {
+  position: relative;
+  overflow: auto;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: #FD815E;
+}
+
+.first-col {
+  width:250 px;
+  min-width: 250 px;
+  max-width: 250 px;
+  left: 0px;
+}

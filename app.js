@@ -234,6 +234,42 @@ app.get("/Purchase_orders", function(req, res){
 res.sendFile(__dirname + "/Purchase_orders.html");
 })
 
+app.get("/sv_09docs", function(req, res){
+res.sendFile(__dirname + "/sv_09docs.html");
+})
+
+app.get("/sv_10docs", function(req, res){
+res.sendFile(__dirname + "/sv_10docs.html");
+})
+
+app.get("/sv_11docs", function(req, res){
+res.sendFile(__dirname + "/sv_11docs.html");
+})
+
+app.get("/sv_12docs", function(req, res){
+res.sendFile(__dirname + "/sv_12docs.html");
+})
+
+app.get("/sv_13docs", function(req, res){
+res.sendFile(__dirname + "/sv_13docs.html");
+})
+
+app.get("/sv_14docs", function(req, res){
+res.sendFile(__dirname + "/sv_14docs.html");
+})
+
+app.get("/sv_15docs", function(req, res){
+res.sendFile(__dirname + "/sv_15docs.html");
+})
+
+app.get("/ManpowerPO", function(req, res){
+res.sendFile(__dirname + "/ManpowerPO.html");
+})
+
+app.get("/AMCsPO", function(req, res){
+res.sendFile(__dirname + "/AMCsPO.html");
+})
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });
