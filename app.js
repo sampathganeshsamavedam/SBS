@@ -274,6 +274,147 @@ app.get("/AMCsPO", function(req, res){
 res.sendFile(__dirname + "/AMCsPO.html");
 })
 
+app.get("/VDS_ROU", function(req, res){
+res.sendFile(__dirname + "/VDS_ROU.html");
+})
+
+app.get("/RBS_ROU", function(req, res){
+res.sendFile(__dirname + "/RBS_ROU.html");
+})
+
+app.get("/VBS_ROU", function(req, res){
+res.sendFile(__dirname + "/VBS_ROU.html");
+})
+
+app.get("/SRS_ROU", function(req, res){
+res.sendFile(__dirname + "/SRS_ROU.html");
+})
+
+app.get("/CP02Contacts", function(req, res){
+res.sendFile(__dirname + "/CP02Contacts.html");
+})
+
+app.get("/CP03Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP03Contacts.html");
+})
+
+app.get("/CP04Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP04Contacts.html");
+})
+
+app.get("/CP05Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP05Contacts.html");
+})
+
+app.get("/CP06Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP06Contacts.html");
+})
+
+app.get("/CP07Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP07Contacts.html");
+})
+
+app.get("/CP08Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP08Contacts.html");
+})
+
+app.get("/CP09Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP09Contacts.html");
+})
+
+app.get("/CP10Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP10Contacts.html");
+})
+
+app.get("/CP11Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP11Contacts.html");
+})
+
+app.get("/CP12Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP12Contacts.html");
+})
+
+app.get("/CP13Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP13Contacts.html");
+})
+
+app.get("/CP14Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP14Contacts.html");
+})
+
+app.get("/CP16Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP16Contacts.html");
+})
+
+app.get("/CP17Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP17Contacts.html");
+})
+
+app.get("/CP18Contacts", function(req, res){
+  res.sendFile(__dirname + "/CP18Contacts.html");
+})
+
+app.get("/SV06Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV06Contacts.html");
+});
+
+app.get("/SV07Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV07Contacts.html");
+});
+
+app.get("/SV08Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV08Contacts.html");
+});
+
+app.get("/SV09Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV09Contacts.html");
+});
+
+app.get("/SV10Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV10Contacts.html");
+});
+
+app.get("/SV11Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV11Contacts.html");
+});
+
+app.get("/SV12Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV12Contacts.html");
+});
+
+app.get("/SV13Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV13Contacts.html");
+});
+
+app.get("/SV14Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV14Contacts.html");
+});
+
+app.get("/SV16Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV16Contacts.html");
+});
+
+app.get("/SV17Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV17Contacts.html");
+});
+
+app.get("/SV18Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV18Contacts.html");
+});
+
+app.get("/SV19Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV19Contacts.html");
+});
+
+app.get("/SV20Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV20Contacts.html");
+});
+
+app.get("/SV21Contacts", function(req, res){
+  res.sendFile(__dirname + "/SV21Contacts.html");
+});
+
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });
