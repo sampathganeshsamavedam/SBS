@@ -3,92 +3,59 @@
 
 <head>
   <meta charset="utf-8">
-  <title>CP-4 Contacts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
-  <style>
-    body {
-      background-color: #f8f9fa;
-    }
-
-    .container {
-      background-color: #ffffff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      color: #000; /* Set text color to black for better visibility */
-    }
-
-    h2 {
-      color: #0d6efd;
-    }
-
-    th {
-      background-color: #198754;
-      color: #ffffff;
-    }
-
-    .table-bordered th,
-    .table-bordered td {
-      border: 1px solid #dee2e6;
-    }
-
-    .table-bordered {
-      border: 2px solid #198754;
-    }
-
-    @media (max-width: 576px) {
-      .table-responsive {
-        overflow-x: auto;
-      }
-    }
-  </style>
+  <title>Contact Information</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-  <div class="container mt-5">
-    <h2 class="text-center">CP-4 Contacts</h2>
-
-    <div class="table-responsive">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">Description</th>
-            <th scope="col">Contact No.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Police Station - Anakapalle</th>
-            <td>08924-220533<br>9440796085</td>
-          </tr>
-          <tr>
-            <th scope="row">Fire Station - Anakapalle</th>
-            <td>08924-222299</td>
-          </tr>
-          <tr>
-            <th scope="row">Govt. Hospital - Anakapalle</th>
-            <td>08924-223340</td>
-          </tr>
-          <tr>
-            <th scope="row">MRO Office - Anakapalle</th>
-            <td>08324-222093</td>
-          </tr>
-          <tr>
-            <th scope="row">Doctor - Kundram</th>
-            <td>9949910221</td>
-          </tr>
-          <tr>
-            <th scope="row">Electrical Sub Station - Kasimkota</th>
-            <td>08924-222673</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+  <table class="bgtest">
+    <thead>
+      <tr class="table-success">
+        <th scope="col"><h3>Description</h3></th>
+        <th scope="col"><h3>Contact No.</h3></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-success">
+        <th scope="row">Police Station - Anakapalle</th>
+        <td class="table-success">
+          <p>08924-220533</p>
+          <p>9440796085</p>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Fire Station - Anakapalle</th>
+        <td class="table-success">
+          <p>08924-222299</p>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Govt. Hospital - Anakapalle</th>
+        <td class="table-success">
+          <p>08924-223340</p>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">MRO Office - Anakapalle</th>
+        <td class="table-success">
+          <p>08324-222093</p>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Doctor - Kundram</th>
+        <td class="table-success">
+          <p>9949910221</p>
+        </td>
+      </tr>
+      <tr class="table-success">
+        <th scope="row">Electrical Sub Station - Kasimkota</th>
+        <td class="table-success">
+          <p>08924-222673</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
 </body>
 
