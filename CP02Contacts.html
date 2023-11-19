@@ -4,58 +4,88 @@
 <head>
   <meta charset="utf-8">
   <title>Contact Information</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    th {
+      background-color: #007bff;
+      color: #ffffff;
+    }
+
+    @media (max-width: 576px) {
+      table {
+        overflow-x: auto;
+        display: block;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <table class="bgtest">
-    <thead>
-      <tr class="table-success">
-        <th scope="col"><h3>Description</h3></th>
-        <th scope="col"><h3>Contact No.</h3></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="table-success">
-        <th scope="row">Police Station - Anakapalle</th>
-        <td class="table-success">
-          <p>08924-220533</p>
-          <p>9440796085</p>
-        </td>
-      </tr>
-      <tr class="table-success">
-        <th scope="row">Fire Station - Anakapalle</th>
-        <td class="table-success">
-          <p>08924-222299</p>
-        </td>
-      </tr>
-      <tr class="table-success">
-        <th scope="row">Govt. Hospital - Anakapalle</th>
-        <td class="table-success">
-          <p>08924-223340</p>
-        </td>
-      </tr>
-      <tr class="table-success">
-        <th scope="row">MRO Office - Anakapalle</th>
-        <td class="table-success">
-          <p>08324-222093</p>
-        </td>
-      </tr>
-      <tr class="table-success">
-        <th scope="row">Doctor - Kundram</th>
-        <td class="table-success">
-          <p>9949910221</p>
-        </td>
-      </tr>
-      <tr class="table-success">
-        <th scope="row">Electrical Sub Station - Kasimkota</th>
-        <td class="table-success">
-          <p>08924-222673</p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="container">
+    <table class="table table-bordered table-responsive">
+      <thead>
+        <tr>
+          <th scope="col">Description</th>
+          <th scope="col">Contact No.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Police Station - Anakapalle</th>
+          <td>08924-220533<br>9440796085</td>
+        </tr>
+        <tr>
+          <th scope="row">Fire Station - Anakapalle</th>
+          <td>08924-222299</td>
+        </tr>
+        <tr>
+          <th scope="row">Govt. Hospital - Anakapalle</th>
+          <td>08924-223340</td>
+        </tr>
+        <tr>
+          <th scope="row">MRO Office - Anakapalle</th>
+          <td>08324-222093</td>
+        </tr>
+        <tr>
+          <th scope="row">Doctor - Kundram</th>
+          <td>9949910221</td>
+        </tr>
+        <tr>
+          <th scope="row">Electrical Sub Station - Kasimkota</th>
+          <td>08924-222673</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 </body>
 
