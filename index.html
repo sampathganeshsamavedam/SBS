@@ -1,172 +1,99 @@
-<!DOCTYPE html> <!-- SPECIFIED THE DOCUMENT TYPE-->
-<html lang="en" dir="ltr">
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Suryapet Booster Station🔥</title><!-- SPECIFIED THE TITLE- TITLE OF THE WEBSITE-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-  <link rel="icon" href="css/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Home Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body,
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .dropdown-container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            background-color: #ffffff;
+            max-width: 70%;
+            color: #343a40;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .dropdown-container h1 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            color: #007bff;
+        }
+
+        .dropdown .btn {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .dropdown .btn:hover,
+        .dropdown .btn:focus {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .dropdown .dropdown-menu {
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dropdown .dropdown-item {
+            color: #343a40;
+        }
+
+        .dropdown .dropdown-item:hover {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+    </style>
 </head>
+<body>
 
-<body >
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <nav class="navbar navbar-expand-lg bg-primary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/index">Home</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+<!-- Dropdown Container -->
+<div class="dropdown-container">
+    <h1 class="display-4">VVSPL/VDPL DATA</h1>
 
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Emergency Contact Numbers of CP and SV stations
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/CP02Contacts">CP02</a></li>
-              <li><a class="dropdown-item" href="/CP03Contacts">CP03</a></li>
-              <li><a class="dropdown-item" href="/CP04Contacts">CP04</a></li>
-              <li><a class="dropdown-item" href="/CP05Contacts">CP05</a></li>
-              <li><a class="dropdown-item" href="/CP06Contacts">CP06</a></li>
-              <li><a class="dropdown-item" href="/CP07Contacts">CP07</a></li>
-              <li><a class="dropdown-item" href="/CP08Contacts">CP08</a></li>
-              <li><a class="dropdown-item" href="/CP09Contacts">CP09</a></li>
-              <li><a class="dropdown-item" href="/CP10Contacts">CP10</a></li>
-              <li><a class="dropdown-item" href="/CP11Contacts">CP11</a></li>
-              <li><a class="dropdown-item" href="/CP12Contacts">CP12</a></li>
-              <li><a class="dropdown-item" href="/CP13Contacts">CP13</a></li>
-              <li><a class="dropdown-item" href="/CP14Contacts">CP14</a></li>
-              <li><a class="dropdown-item" href="/CP16Contacts">CP16</a></li>
-              <li><a class="dropdown-item" href="/CP17Contacts">CP17</a></li>
-              <li><a class="dropdown-item" href="/CP18Contacts">CP18</a></li>
-              <li><a class="dropdown-item" href="/SV06Contacts">SV06</a></li>
-              <li><a class="dropdown-item" href="/SV07Contacts">SV07</a></li>
-              <li><a class="dropdown-item" href="/SV08Contacts">SV08</a></li>
-              <li><a class="dropdown-item" href="/SV09Contacts">SV09</a></li>
-              <li><a class="dropdown-item" href="/SV10Contacts">SV10</a></li>
-              <li><a class="dropdown-item" href="/SV11Contacts">SV11</a></li>
-              <li><a class="dropdown-item" href="/SV12Contacts">SV12</a></li>
-              <li><a class="dropdown-item" href="/SV13Contacts">SV13</a></li>
-              <li><a class="dropdown-item" href="/SV14Contacts">SV14</a></li>
-              <li><a class="dropdown-item" href="/SV15Contacts">SV15</a></li>
-              <li><a class="dropdown-item" href="/SV16Contacts">SV16</a></li>
-              <li><a class="dropdown-item" href="/SV17Contacts">SV17</a></li>
-              <li><a class="dropdown-item" href="/SV18Contacts">SV18</a></li>
-              <li><a class="dropdown-item" href="/SV19Contacts">SV19</a></li>
-              <li><a class="dropdown-item" href="/SV20Contacts">SV20</a></li>
-              <li><a class="dropdown-item" href="/SV21Contacts">SV21</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-<br />
-
-
-<div class="row">
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">ROU  </h5>
-        <p class="card-text">SV station details, Farmer contacts</p>
-        <a href="/rou" class="btn btn-primary">Click here for details</a>
-      </div>
-    </div>
-    <br>
-
-
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Mechanical</h5>
-        <p class="card-text">Equipment details, IMS</p>
-        <a href="/Mechanical" class="btn btn-primary">Click here for details</a>
-
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Operations </h5>
-        <p class="card-text">SOPs, IMS Schedule</p>
-        <a href="/Operations" class="btn btn-primary">Click here for details</a>
-      </div>
-    </div>
-    <br>
-
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Fire and Safety </h5>
-        <p class="card-text">SOPs, List of Equipment</p>
-        <a href="/FAS" class="btn btn-primary">Click here for details</a>
-      </div>
-    </div>
-    <br>
-
-  </div>
-
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Instrumentation </h5>
-        <p class="card-text">SOPs, List of Equipment</p>
-        <a href="/Instrumentation" class="btn btn-primary">Click here for details</a>
-      </div>
-    </div>
-    <br>
-  </div>
-
-  <div class="col-sm-6">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Electrical </h5>
-        <p class="card-text">SOPs, List of Equipment</p>
-        <a href="/Electrical" class="btn btn-primary">Click here for details</a>
-      </div>
-    </div>
-    <br>
-  </div>
-
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Telecom </h5>
-          <p class="card-text">SOPs, List of Equipment</p>
-          <a href="/Telecom" class="btn btn-primary">Click here for details</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Click here to select
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="vvspl.html">VVSPL</a></li>
+                    <li><a class="dropdown-item" href="vdpl.html">VDPL</a></li>
+                </ul>
+            </div>
         </div>
-      </div>
-      <br>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Purchase Orders </h5>
-          <a href="/Purchase_orders" class="btn btn-primary">Click here for details</a>
-        </div>
-      </div>
-      <br>
-    </div>
-
-
+    </nav>
 </div>
 
-
-
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
-
-
-
 </html>
