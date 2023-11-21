@@ -414,6 +414,13 @@ app.get("/SV21Contacts", function(req, res){
   res.sendFile(__dirname + "/SV21Contacts.html");
 });
 
+app.get("/VVSPLHomepage", function(req, res){
+  res.sendFile(__dirname + "/VVSPLHomepage.html");
+});
+
+app.get("/VDPLHomepage", function(req, res){
+  res.sendFile(__dirname + "/VDPLHomepage.html");
+});
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
