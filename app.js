@@ -414,12 +414,12 @@ app.get("/SV21Contacts", function(req, res){
   res.sendFile(__dirname + "/SV21Contacts.html");
 });
 
-app.get("/VVSPLHomepage", function(req, res){
-  res.sendFile(__dirname + "/VVSPLHomepage.html");
+app.get("/VVSPLHomePage", function(req, res){
+  res.sendFile(__dirname + "/VVSPLHomePage.html");
 });
 
-app.get("/VDPLHomepage", function(req, res){
-  res.sendFile(__dirname + "/VDPLHomepage.html");
+app.get("/VDPLHomePage", function(req, res){
+  res.sendFile(__dirname + "/VDPLHomePage.html");
 });
 
 app.get("/SVStationLocation", function(req, res){
