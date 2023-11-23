@@ -422,6 +422,10 @@ app.get("/VDPLHomepage", function(req, res){
   res.sendFile(__dirname + "/VDPLHomepage.html");
 });
 
+app.get("/SVStationLocation", function(req, res){
+  res.sendFile(__dirname + "/SVStationLocation.html");
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });
