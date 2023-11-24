@@ -426,6 +426,10 @@ app.get("/SVStationLocation", function(req, res){
   res.sendFile(__dirname + "/SVStationLocation.html");
 });
 
+app.get("/SVStationEmergencyContacts", function(req, res){
+  res.sendFile(__dirname + "/SVStationEmergencyContacts.html");
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });

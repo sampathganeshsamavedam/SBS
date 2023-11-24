@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
+    <title>Dropdown Table Example</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3>Select an option to display a table:</h3>
+    <div class="mb-3">
+        <select class="form-select" id="tableSelector" onchange="displayTable()">
+            <!--<option value="none">Select Table</option>-->
+            <option value="CP02">CP02</option>
+            <option value="CP03">CP03</option>
+            <option value="CP04">CP04</option>
+            <option value="CP05">CP05</option>
+            <option value="CP06">CP06</option>
+            <option value="CP07">CP07</option>
+            <option value="CP08">CP08</option>
+            <option value="CP09">CP09</option>
+            <option value="CP10">CP10</option>
+            <option value="CP11">CP11</option>
+            <option value="CP12">CP12</option>
+            <option value="CP13">CP13</option>
+            <option value="CP14">CP14</option>
+            <option value="CP16">CP16</option>
+            <option value="CP17">CP17</option>
+            <option value="CP18">CP18</option>
+            <option value="SV06">SV06</option>
+            <option value="SV07">SV07</option>
+            <option value="SV08">SV08</option>
+            <option value="SV09">SV09</option>
+            <option value="SV10">SV10</option>
+            <option value="SV11">SV11</option>
+            <option value="SV12">SV12</option>
+            <option value="SV13">SV13</option>
+            <option value="SV14">SV14</option>
+            <option value="SV15">SV15</option>
+            <option value="SV16">SV16</option>
+            <option value="SV17">SV17</option>
+            <option value="SV18">SV18</option>
+            <option value="SV19">SV19</option>
+            <option value="SV20">SV20</option>
+            <option value="SV21">SV21</option>
+        </select>
+    </div>
+
+    <div id="tableContainer" class="mt-3" style="display: none;">
+        <!-- Tables will be displayed here -->
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function displayTable() {
+        var tableSelector = document.getElementById("tableSelector");
+        var selectedTable = tableSelector.value;
+        var tableContainer = document.getElementById("tableContainer");
+
+        // Hide all tables
+        var allTables = document.querySelectorAll("[data-table]");
+        allTables.forEach(function (table) {
+            table.style.display = "none";
+        });
+
+        // Display the selected table
+        if (selectedTable !== "none") {
+            var selectedTableElement = document.getElementById(selectedTable);
+            if (selectedTableElement) {
+                selectedTableElement.style.display = "block";
+                tableContainer.style.display = "block";
+            } else {
+                tableContainer.style.display = "none";
+            }
+        } else {
+            tableContainer.style.display = "none";
+        }
+    }
+</script>
+
+<!-- CP Tables -->
+
+<div id="CP02" class="container" data-table>
+    <h4>CP02 Table</h4>
+    <!-- Add content for CP02 table -->
+</div>
+
+
+<div id="CP03" class="container" data-table>
+  <h4>CP03 Table</h4>
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Contact No.s</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Police Station- Sabbavaram</td>
+              <td>08924-248233<br>9440796089</td>
+          </tr>
+          <tr>
+              <td>Fire Station- Sabbavaram</td>
+              <td>08924-248799</td>
+          </tr>
+          <tr>
+              <td>Govt. Hospital- Sabbavaram</td>
+              <td>9440572085</td>
+          </tr>
+          <tr>
+              <td>MRO Office- Sabbavaram</td>
+              <td>08924-248239</td>
+          </tr>
+          <tr>
+              <td>Doctor - Narapadu</td>
+              <td>9542902894</td>
+          </tr>
+          <tr>
+              <td>Electrical Sub Station - Kasimkota</td>
+              <td>08924-222673<br>8498052615</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<div id="CP04" class="container" data-table>
+    <h4>CP04 Table</h4>
+    <!-- Add content for CP04 table -->
+</div>
+
+<!-- Continue adding tables for CP05, CP06, ..., CP18 -->
+
+<!-- SV Tables -->
+<div id="SV06" class="container" data-table>
+    <h4>SV06 Table</h4>
+    <!-- Add content for SV06 table -->
+</div>
+
+<div id="SV07" class="container" data-table>
+    <h4>SV07 Table</h4>
+    <!-- Add content for SV07 table -->
+</div>
+
+<!-- Continue adding tables for SV08, SV09, ..., SV21 -->
+
+</body>
+</html>
