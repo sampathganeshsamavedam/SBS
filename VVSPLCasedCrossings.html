@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom styles */
+        .custom-header {
+            color: #3498db; /* Change the color as needed */
+        }
+
+        .custom-dropdown {
+            background-color: #ecf0f1; /* Change the background color as needed */
+            color: #2c3e50; /* Change the text color as needed */
+        }
+
+        .custom-table {
+            margin-top: 20px;
+        }
+
+        .map-link {
+            color: #3498db; /* Change the link color as needed */
+            cursor: pointer;
+        }
+    </style>
+    <title>Cased Road crossings</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3 class="custom-header">Select the Station</h3>
+    <div class="mb-3">
+        <select class="form-select custom-dropdown" id="stationSelector" onchange="displayTable()">
+            <option value="VDS">VDS</option>
+            <option value="RBS">RBS</option>
+            <option value="VBS">VBS</option>
+            <option value="SBS">SBS</option>
+            <option value="SRS">SRS</option>
+        </select>
+    </div>
+
+    <div id="stationTable" class="custom-table table-responsive"></div>
+</div>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  function displayTable() {
+    var stationSelector = document.getElementById("stationSelector");
+    var selectedStation = stationSelector.value;
+
+    var stationTable = document.getElementById("stationTable");
+
+    // Sample data - replace this with your actual data
+    var data = [
+        ["Station", "Crossing Name", "Type of Crossing", "Chainage", "Map link"],
+        ["VDS", "RAIWADA LINE", "CANAL", 9.256, "https://www.google.com/maps/place/17.740618°,83.175869°"],
+["VDS", "RAIWADA LINE", "CANAL", 14.423, "https://www.google.com/maps/place/17.771306°,83.153523°"],
+["VDS", "RAIWADA LINE", "CANAL", 17.8, "https://www.google.com/maps/place/17.780798°,83.124884°"],
+["VDS", "YELERU", "CANAL", 65.273, "https://www.google.com/maps/place/17.636783°,82.765160°"],
+["VDS", "YELERU", "CANAL", 126.5, "https://www.google.com/maps/place/17.313613°,82.326678°"],
+["VDS", "YELERU", "CANAL", 129.223, "https://www.google.com/maps/place/17.292921°,82.306123°"],
+["VBS", "VISSENAPETA - NSP CANAL", "CANAL", 306.411, "https://www.google.com/maps/place/16.952423°,80.760144°"],
+["SBS", "LALBHADUR MAIN CANAL", "CANAL", 440.853, "https://www.google.com/maps/place/17.024320°,79.838818°"],
+["VDS", "VPT - AREA", "RAIL", 0.181, "https://www.google.com/maps/place/17.711216°,83.242757°"],
+["VDS", "STEEL PLANT RAIL LINE (DRM – VIZAG)", "RAIL", 5.577, "https://www.google.com/maps/place/17.724809°,83.204108°"],
+["VDS", "MADRAS – HOWRAH RAIL LINE", "RAIL", 6.673, "https://www.google.com/maps/place/17.725977°,83.194513°"],
+["VBS", "VIJAYAWADA - SECUNDERABAD LINE/HPCL RAIL LINE", "RAIL", 357.67, "https://www.google.com/maps/place/16.729943°,80.524527°"],
+["SBS", "MADRAS CEMENTS LTD RAIL LINE", "RAIL", 401.208, "https://www.google.com/maps/place/16.901680°,80.162839°"],
+["SRS", "S.C. RAILWAY CROSSING (BIBINAGAR-NADIKUDI)", "RAIL", 530.09, "https://www.google.com/maps/place/17.306625°,79.063208°"],
+["SRS", "S.C. RAILWAY CROSSING (SECUNDERABAD-VIJAYAWADA)", "RAIL", 571.59, "https://www.google.com/maps/place/17.455277°,78.717041°"],
+["VDS", "VPT AREA", "ROAD", 0.253, "https://www.google.com/maps/place/17.712104°,83.241683°"],
+["VDS", "NH CROSSING", "ROAD", 5.349, "https://www.google.com/maps/place/17.726151°,83.200856°"],
+["VDS", "ANAKAPALLE-SABBAVARAM", "ROAD", 18.811, "https://www.google.com/maps/place/17.778999°,83.114745°"],
+["VDS", "ANAKAPALLE-CHODAVARAM", "ROAD", 33.328, "https://www.google.com/maps/place/17.756851°,82.990108°"],
+["VDS", "ANAKAPALLE-KUNDARAM", "ROAD", 42.762, "https://www.google.com/maps/place/17.734623°,82.912039°"],
+["VDS", "TALLAPALEM-NARSIPATNAM", "ROAD", 64.553, "https://www.google.com/maps/place/17.627351°,82.754657°"],
+["VDS", "PEDDABODDEPALLI-REBUPOTHAVARAM", "ROAD", 75.127, "https://www.google.com/maps/place/17.586415°,82.666960°"],
+["VDS", "NARSIPATNAM-TUNI", "ROAD", 92.805, "https://www.google.com/maps/place/17.527519°,82.518312°"],
+["VDS", "RAVUTHULAPUDI-BALARAMPURAM", "ROAD", 115.039, "https://www.google.com/maps/place/17.397882°,82.377780°"],
+["VDS", "RAVUTHULAPUDI-TETAGUNTA", "ROAD", 116.591, "https://www.google.com/maps/place/17.387289°,82.377962°"],
+["VDS", "RAVUTHULAPUDI-SHANKAVARAM", "ROAD", 120.647, "https://www.google.com/maps/place/17.352635°,82.359217°"],
+["VDS", "KOTTURU-VENKATANAGARAM", "ROAD", 130.015, "https://www.google.com/maps/place/17.291031°,82.302675°"],
+["VDS", "SHARABHAVARAM-CHINTALURU", "ROAD", 133.01, "https://www.google.com/maps/place/17.287526°,82.276492°"],
+["RBS", "UTTARAKANCHI-OMMANGI", "ROAD", 139.697, "https://www.google.com/maps/place/17.287597°,82.217212°"],
+["RBS", "ELESWARAM-ERRAVARAM", "ROAD", 150.77, "https://www.google.com/maps/place/17.260481°,82.115596°"],
+["RBS", "JAGGAMPETA-GOKAVARAM", "ROAD", 166.154, "https://www.google.com/maps/place/17.226772°,81.979959°"],
+["RBS", "RAJAHMUNDRY-GOKAVARAM", "ROAD", 181.081, "https://www.google.com/maps/place/17.202001°,81.857536°"],
+["RBS", "NAGAMPALLLI-KORUKONDA", "ROAD", 191.764, "https://www.google.com/maps/place/17.215303°,81.755271°"],
+["RBS", "GOPALAPURAM-GODDIGUDEM", "ROAD", 217.517, "https://www.google.com/maps/place/17.124715°,81.533605°"],
+["RBS", "KARICHERLAGUDEM ROAD CROSSING", "ROAD", 221.4, "https://www.google.com/maps/place/17.119696°,81.498755°"],
+["RBS", "KOYYALAGUDEM - GOPALAPURAM", "ROAD", 221.658, "https://www.google.com/maps/place/17.118722°,81.497967°"],
+["RBS", "KOYYALAGUDEM – POTAVARAM", "ROAD", 229.889, "https://www.google.com/maps/place/17.096696°,81.428105°"],
+["RBS", "DEVULAPALLI – LAKSHMIPURAM", "ROAD", 247.456, "https://www.google.com/maps/place/17.066673°,81.271169°"],
+["RBS", "J. R. GUDEM – K. KOTA", "ROAD", 255.992, "https://www.google.com/maps/place/17.021828°,81.219142°"],
+["RBS", "J. K. GUDEM – K. KOTA", "ROAD", 260.287, "https://www.google.com/maps/place/17.015675°,81.173692°"],
+["VBS", "DHARMAJIGUDEM - J. K. GUDEM", "ROAD", 267.682, "https://www.google.com/maps/place/17.005643°,81.106542°"],
+["VBS", "SHANKUSHAKARAPURAM", "ROAD", 273.575, "https://www.google.com/maps/place/17.007733°,81.053648°"],
+["VBS", "ELURU – CHINTALAPUDI", "ROAD", 279.569, "https://www.google.com/maps/place/17.004328°,80.996389°"],
+["VBS", "FATHIMAPURAM – POLAVARAM", "ROAD", 288.89, "https://www.google.com/maps/place/16.988683°,80.918712°"],
+["VBS", "POLAVARAM – CHATRAI", "ROAD", 289.755, "https://www.google.com/maps/place/16.987150°,80.908345°"],
+["VBS", "CHATRAI - CHIMALAPADU", "ROAD", 294.7, "https://www.google.com/maps/place/16.975988°,80.863392°"],
+["VBS", "VISSANNAPETA – T. NARASAPURAM", "ROAD", 302.095, "https://www.google.com/maps/place/16.964392°,80.800363°"],
+["VBS", "VISSANNAPETA – MITTAGUDEM", "ROAD", 302.866, "https://www.google.com/maps/place/16.963065°,80.792136°"],
+["VBS", "VISSANNAPETA – CHANDRUPATLA", "ROAD", 304.269, "https://www.google.com/maps/place/16.960656°,80.780311°"],
+["VBS", "VISSANNAPETA – SHRIRAMPURAM", "ROAD", 307.588, "https://www.google.com/maps/place/16.947939°,80.749913°"],
+["VBS", "VISSANNAPETA – A. KONDURU", "ROAD", 309.989, "https://www.google.com/maps/place/16.939945°,80.732662°"],
+["VBS", "VISSANNAPETA – TURUPUMADHAVARAM", "ROAD", 313.477, "https://www.google.com/maps/place/16.922634°,80.703958°"],
+["VBS", "RUDRAVARAM – CHIMALAPADU", "ROAD", 319.966, "https://www.google.com/maps/place/16.883586°,80.662768°"],
+["VBS", "MYLAVARAM – A. KONDURU", "ROAD", 332.691, "https://www.google.com/maps/place/16.867910°,80.648870°"],
+["VBS", "MYLAVARAM – PONDUGAL", "ROAD", 334.705, "https://www.google.com/maps/place/16.771528°,80.633879°"],
+["VBS", "MYLAVARAM – G. KONDURU", "ROAD", 346.113, "https://www.google.com/maps/place/16.681927°,80.566535°"],
+["VBS", "MYLAVARAM – G. KONDURU", "ROAD", 346.334, "https://www.google.com/maps/place/16.681887°,80.566495°"],
+["SBS", "VIJAYAWADA - JAGGAYYAPETA", "ROAD", 407.041, "https://www.google.com/maps/place/16.909289°,80.118626°"],
+["SBS", "KODAD - CHILUKURU", "ROAD", 427.882, "https://www.google.com/maps/place/16.979144°,79.938850°"],
+["SBS", "NH-9 (HYDERABAD - VIJAYAWADA)", "ROAD", 491.762, "https://www.google.com/maps/place/17.170040°,79.390268°"],
+["SRS", "NH (HYDERABAD - WARANGAL)", "ROAD", 571.72, "https://www.google.com/maps/place/17.453025°,78.717697°"]
+    ];
+
+    // Filter data based on the selected station
+    var filteredData = data.filter(row => row[0] === selectedStation);
+
+    // Create HTML table
+    var table = "<table class='table table-bordered'><thead class='thead-dark'><tr>";
+    // Add the desired headings
+    table += "<th>Station</th><th>Crossing Name</th><th>Type of Crossing</th><th>Chainage</th><th>Map Link</th></tr></thead><tbody>";
+
+    // Populate the table rows
+    for (var j = 0; j < filteredData.length; j++) {
+        table += "<tr>";
+        // Extract the relevant data
+        var station = filteredData[j][0];
+        var crossingName = filteredData[j][1];
+        var typeOfCrossing = filteredData[j][2];
+        var chainage = filteredData[j][3];
+        var mapLink = filteredData[j][4];
+
+        // Add the data to the table
+        table += "<td>" + station + "</td><td>" + crossingName + "</td><td>" + typeOfCrossing + "</td><td>" + chainage + "</td>";
+        // Add a hyperlink to follow the map link
+        table += "<td><a href='#' class='map-link' onclick='navigateToMap(\"" + mapLink + "\")'>View Map</a></td></tr>";
+    }
+
+    // Close the table
+    table += "</tbody></table>";
+
+    // Display the table
+    stationTable.innerHTML = table;
+}
+
+    // Function to open the map link in a new tab
+    function navigateToMap(mapLink) {
+        window.open(mapLink, '_blank');
+    }
+
+    // Function to generate map link from row data
+    function getMapLink(rowData) {
+        // Replace this with your logic to generate the map link
+        return "https://www.google.com/maps/place/" + rowData[1] + "," + rowData[2];
+    }
+</script>
+
+</body>
+</html>

@@ -1,59 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Operations</title>
-    <meta charset="utf-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <nav class="navbar navbar-expand-lg bg-primary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <title>Operations</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center"></h1>
+
+    <!-- Button dropdown -->
+    <div class="btn-group">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Select the Station
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Quick links
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/imsschedule">IMS Schedule</a></li>
-                <li><a class="dropdown-item" href="Line push and interface.pdf">Interface handling SOP</a></li>
-                <li><a class="dropdown-item" href="#"></a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <br>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">SOPs </h5>
-            <a href="/SOP" class="btn btn-primary">Click here for details</a>
-          </div>
-        </div>
-        <br>
-      </div>
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">IMS Schedule</h5>
-            <p class="card-text"></p>
-            <a href="/imsschedule" class="btn btn-primary">Click here for details</a>
-          </div>
-        </div>
-      </div>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="VDS Operation Manual.pdf" target="_blank">VDS</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.770383,83.059254" target="_blank">IPS-1</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.734623,82.912039" target="_blank">RBS</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.614422,82.739039" target="_blank">IPS-2</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.394942,82.377238" target="_blank">VBS</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.289246,82.273870" target="_blank">SBS</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.236827,82.046346" target="_blank">IPS-3</a></li>
+          <li><a class="dropdown-item" href="https://www.google.com/maps/place/17.188497,27.676847" target="_blank">SRS/a></li>
+        </ul>
     </div>
-  </body>
+</div>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

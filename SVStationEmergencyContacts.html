@@ -2,26 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css">
-    <title>Dropdown Table Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Your Page Title</title>
 </head>
 <body>
 
 <div class="container mt-5">
-    <h3>Select an option to display a table:</h3>
+    <h3>Select the CP/SV station</h3>
     <div class="mb-3">
-        <select class="form-select" id="tableSelector" onchange="displayTable()">
+        <select class="form-select bg-dark text-light custom-select-lg" id="tableSelector" onchange="displayTable()">
             <!--<option value="none">Select Table</option>-->
             <option value="CP02">CP02</option>
             <option value="CP03">CP03</option>
             <option value="CP04">CP04</option>
             <option value="CP05">CP05</option>
-            <option value="CP06">CP06</option>
             <option value="CP07">CP07</option>
             <option value="CP08">CP08</option>
             <option value="CP09">CP09</option>
-            <option value="CP10">CP10</option>
             <option value="CP11">CP11</option>
             <option value="CP12">CP12</option>
             <option value="CP13">CP13</option>
@@ -40,13 +39,17 @@
             <option value="SV14">SV14</option>
             <option value="SV15">SV15</option>
             <option value="SV16">SV16</option>
-            <option value="SV17">SV17</option>
             <option value="SV18">SV18</option>
             <option value="SV19">SV19</option>
             <option value="SV20">SV20</option>
             <option value="SV21">SV21</option>
         </select>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <div id="tableContainer" class="mt-3" style="display: none;">
         <!-- Tables will be displayed here -->
@@ -84,8 +87,41 @@
 <!-- CP Tables -->
 
 <div id="CP02" class="container" data-table>
-    <h4>CP02 Table</h4>
-    <!-- Add content for CP02 table -->
+  <h4>CP02 Table</h4>
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Contact No.</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Police Station- Pendurthy</td>
+              <td>0891-2764223<br>9440796039</td>
+          </tr>
+          <tr>
+              <td>Fire Station - Gajuwaka</td>
+              <td>0891-2563582</td>
+          </tr>
+          <tr>
+              <td>Hospital - Gajuwaka</td>
+              <td>0891-2517040</td>
+          </tr>
+          <tr>
+              <td>Electrical Sub Station</td>
+              <td>0891-2516749<br>9440812563</td>
+          </tr>
+          <tr>
+              <td>MRO Office</td>
+              <td>0891-2764244</td>
+          </tr>
+          <tr>
+              <td>Doctor - Narava</td>
+              <td>984833561</td>
+          </tr>
+      </tbody>
+  </table>
 </div>
 
 
@@ -128,21 +164,831 @@
 </div>
 
 <div id="CP04" class="container" data-table>
-    <h4>CP04 Table</h4>
-    <!-- Add content for CP04 table -->
+  <h4>CP04 Table</h4>
+  <table class="table table-bordered">
+      <thead>
+          <tr>
+              <th scope="col">Description</th>
+              <th scope="col">Contact No.</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td>Police Station- Anakapalle</td>
+              <td>08924-220533<br>9440796085</td>
+          </tr>
+          <tr>
+              <td>Fire Station - Anakapalle</td>
+              <td>08924-222299</td>
+          </tr>
+          <tr>
+              <td>Govt. Hospital - Anakapalle</td>
+              <td>08924-223340</td>
+          </tr>
+          <tr>
+              <td>MRO Office- Anakapalle</td>
+              <td>08324-222093</td>
+          </tr>
+          <tr>
+              <td>Doctor - Kundram</td>
+              <td>9949910221</td>
+          </tr>
+          <tr>
+              <td>Electrical Sub Station - Kasimkota</td>
+              <td>08924-222673</td>
+          </tr>
+      </tbody>
+  </table>
 </div>
 
-<!-- Continue adding tables for CP05, CP06, ..., CP18 -->
+<div id="CP05" class="container" data-table>
+  <h4>CP05 Table</h4>
+      <table class="table table-bordered">
+          <thead>
+              <tr>
+                  <th scope="col">Description</th>
+                  <th scope="col">Contact No.</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Police Station- Makaverapalem</td>
+                  <td>08932-222233<br>9440796000</td>
+              </tr>
+              <tr>
+                  <td>Fire Station - Balighattam</td>
+                  <td>08932-287712</td>
+              </tr>
+              <tr>
+                  <td>Govt. Hospital - Makaverapalem</td>
+                  <td>8985791955</td>
+              </tr>
+              <tr>
+                  <td>MRO Office</td>
+                  <td>08324-222093<br>8978281864</td>
+              </tr>
+              <tr>
+                  <td>Doctor - Makaverapalem</td>
+                  <td>8985791955<br>9959606921</td>
+              </tr>
+              <tr>
+                  <td>Electrical Sub Station</td>
+                  <td>08932-222512<br>9440817649</td>
+              </tr>
+          </tbody>
+      </table>
+</div>
+
+<div id="CP07" class="container" data-table>
+    <h4>CP07 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station- Kotananduru</td>
+                <td>9440900773</td>
+            </tr>
+            <tr>
+                <td>Police Station- Annavaram</td>
+                <td>9440796571</td>
+            </tr>
+            <tr>
+                <td>Fire Station - Tuni</td>
+                <td>08854-253601</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital - Rautulapudi</td>
+                <td>9440221364</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>08868-235793<br>8008803193</td>
+            </tr>
+            <tr>
+                <td>Electrical Sub Station</td>
+                <td>9490614820<br>9440814676</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP08" class="container" data-table>
+    <h4>CP08 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office- Prathipadu</td>
+                <td>9849903885</td>
+            </tr>
+            <tr>
+                <td>Police Station- Prathipadu</td>
+                <td>08868-246733<br>9440796570</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Prathipadu</td>
+                <td>08868-246709<br>9963727769</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital</td>
+                <td>08868-246720</td>
+            </tr>
+            <tr>
+                <td>AP Transco (AE)</td>
+                <td>08868-246740<br>9440812673</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP09" class="container" data-table>
+    <h4>CP09 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office- Jaggampeta</td>
+                <td>08852-233070<br>9849903883</td>
+            </tr>
+            <tr>
+                <td>Police Station- Jaggampeta</td>
+                <td>08852-233033<br>9440796529</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Jaggampeta</td>
+                <td>08852-233388<br>8106620158</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital</td>
+                <td>08852-233002</td>
+            </tr>
+            <tr>
+                <td>AP Transco (AE)</td>
+                <td>9440904455<br>9440812669</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP11" class="container" data-table>
+    <h4>CP11 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Sithanagaram</td>
+                <td>0883-2458833<br>9949848346</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Rajahmundry</td>
+                <td>0883-2444101<br>9640453777</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital- Sabbavaram</td>
+                <td>0883-2459503<br>9490082044</td>
+            </tr>
+            <tr>
+                <td>Ambulance</td>
+                <td>9248144334</td>
+            </tr>
+            <tr>
+                <td>AP Transco (AE)</td>
+                <td>9440812624</td>
+            </tr>
+            <tr>
+                <td>Electrical Sub Station - Kasimkota</td>
+                <td>08924-222673<br>8498052615</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP12" class="container" data-table>
+    <h4>CP12 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Polavaram</td>
+                <td>9491041483</td>
+            </tr>
+            <tr>
+                <td>Police Station- Polavaram</td>
+                <td>08811-251233<br>9440796664</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Kovvur</td>
+                <td>08813-231101<br>9963726417</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital</td>
+                <td>8985989047<br>9440385131</td>
+            </tr>
+            <tr>
+                <td>AP TRANSCO</td>
+                <td>9490614880<br>9440812773</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP13" class="container" data-table>
+    <h4>CP13 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Gopalapuram</td>
+                <td>08813-2557451<br>94910141484</td>
+            </tr>
+            <tr>
+                <td>Police Station- Gopalapuram</td>
+                <td>9440796665<br>08813-257433</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Jangareddygudem</td>
+                <td>08821-225301<br>9963725978</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital</td>
+                <td>08813-257516</td>
+            </tr>
+            <tr>
+                <td>AP TRANSCO</td>
+                <td>9440904077<br>9440812772</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="CP14" class="container" data-table>
+    <h4>CP14 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office- Jangareddygudem</td>
+                <td>9491041480</td>
+            </tr>
+            <tr>
+                <td>Police Station- Jangareddygudem</td>
+                <td>08821-225233<br>9440796628</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Jangareddygudem</td>
+                <td>08821-225301<br>9963725978</td>
+            </tr>
+            <tr>
+                <td>Govt. Hospital</td>
+                <td>08821-225205</td>
+            </tr>
+            <tr>
+                <td>AP Transco (AE)</td>
+                <td>08813-249258<br>9490614886</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
 <!-- SV Tables -->
 <div id="SV06" class="container" data-table>
     <h4>SV06 Table</h4>
-    <!-- Add content for SV06 table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Veerulapadu</td>
+                <td>08678-286242</td>
+            </tr>
+            <tr>
+                <td>Police Station- Veerulapadu</td>
+                <td>08678-286233</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Kanchikacherla</td>
+                <td>08678-274444</td>
+            </tr>
+            <tr>
+                <td>Substation APSEB</td>
+                <td>9491052101</td>
+            </tr>
+            <tr>
+                <td>RMP- Veerulapadu</td>
+                <td>9912646095</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <div id="SV07" class="container" data-table>
     <h4>SV07 Table</h4>
-    <!-- Add content for SV07 table -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Nandigama</td>
+                <td>08678-275241</td>
+            </tr>
+            <tr>
+                <td>Police Station- Nandigama</td>
+                <td>08678-275233</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Nandigama</td>
+                <td>08678-275400</td>
+            </tr>
+            <tr>
+                <td>Substation APSEB</td>
+                <td>9490615697</td>
+            </tr>
+            <tr>
+                <td>RMP- Veerulapadu</td>
+                <td>9912646095</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV08" class="container" data-table>
+    <h4>SV08 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Nandigama</td>
+                <td>08678-275241</td>
+            </tr>
+            <tr>
+                <td>Police Station- Nandigama</td>
+                <td>08678-275233</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Nandigama</td>
+                <td>08678-275400</td>
+            </tr>
+            <tr>
+                <td>Substation APSEB</td>
+                <td>9490615697</td>
+            </tr>
+            <tr>
+                <td>RMP- Konduru</td>
+                <td>9542761579</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV09" class="container" data-table>
+    <h4>SV09 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440796463</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9908664619</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8678275400</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>8919343936</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9848430378</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440812145</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV10" class="container" data-table>
+    <h4>SV10 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440796465</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9849903996</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8654222101</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>8654222484</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9704789850</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440812147</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV11" class="container" data-table>
+    <h4>SV11 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440795617</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9985021494</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8712699330</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>8683255422</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9985966525</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440813616</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV12" class="container" data-table>
+    <h4>SV12 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440796465</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9989000417</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8712699330</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>8683255299</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9848235289</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440813606</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV13" class="container" data-table>
+    <h4>SV13 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>8331940391</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>7989349249</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8712699330</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>9441993877</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9553253360</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440813612</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV14" class="container" data-table>
+    <h4>SV14 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440700054</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9985915021</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8702699329</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>108</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9553367092</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9443813604</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV15" class="container" data-table>
+    <h4>SV15 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Police Station</td>
+                <td>9440795637</td>
+            </tr>
+            <tr>
+                <td>MRO Office</td>
+                <td>9985021450</td>
+            </tr>
+            <tr>
+                <td>Fire Station</td>
+                <td>8702699329</td>
+            </tr>
+            <tr>
+                <td>Nearest Hospital</td>
+                <td>9908533706</td>
+            </tr>
+            <tr>
+                <td>Nearest First-Aid center (RMP)</td>
+                <td>9985234344</td>
+            </tr>
+            <tr>
+                <td>AE(Elec.)</td>
+                <td>9440813562</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV16" class="container" data-table>
+    <h4>SV16 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Kattangur</td>
+                <td>9985021448</td>
+            </tr>
+            <tr>
+                <td>Police Station- Kattangur</td>
+                <td>08682-278455<br>9440795649</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Nakrekal</td>
+                <td>08682-254699<br>996374630</td>
+            </tr>
+            <tr>
+                <td>Substation TSSPDCL</td>
+                <td>9491065856</td>
+            </tr>
+            <tr>
+                <td>Hospital- Nalgonda</td>
+                <td>08682-223420</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV19" class="container" data-table>
+    <h4>SV19 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-B Pochampalli</td>
+                <td>9985915022</td>
+            </tr>
+            <tr>
+                <td>Police Station- B Pochampalli</td>
+                <td>9440795649</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Choutuppal</td>
+                <td>08694-200201<br>9963748005</td>
+            </tr>
+            <tr>
+                <td>Substation TSSPDCL</td>
+                <td>9948654880</td>
+            </tr>
+            <tr>
+                <td>Hospital- Choutuppal</td>
+                <td>08685-243443<br>9866150543</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV20" class="container" data-table>
+    <h4>SV20 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office- Pochampalli</td>
+                <td>9618820049</td>
+            </tr>
+            <tr>
+                <td>Police Station- Pochampalli</td>
+                <td>7013988473<br>08685-278333</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Choutuppal</td>
+                <td>8712699338</td>
+            </tr>
+            <tr>
+                <td>Substation TSSPDCL</td>
+                <td>9948654880</td>
+            </tr>
+            <tr>
+                <td>Hospital</td>
+                <td>9440442423</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="SV21" class="container" data-table>
+    <h4>SV21 Table</h4>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Description</th>
+                <th scope="col">Contact No.s</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>MRO Office-Bibinagar</td>
+                <td>08813-2557451</td>
+            </tr>
+            <tr>
+                <td>Police Station- Bibinagar</td>
+                <td>08685-278333<br>9440795647</td>
+            </tr>
+            <tr>
+                <td>Fire Station- Bhongir</td>
+                <td>08685-242299<br>8712699336</td>
+            </tr>
+            <tr>
+                <td>Substation TSSPDCL</td>
+                <td>9491065893</td>
+            </tr>
+            <tr>
+                <td>Hospital</td>
+                <td>08685-243443<br>9866150543</td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Continue adding tables for SV08, SV09, ..., SV21 -->
