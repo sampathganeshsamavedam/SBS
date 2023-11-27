@@ -434,6 +434,30 @@ app.get("/VVSPLCasedCrossings", function(req, res){
   res.sendFile(__dirname + "/VVSPLCasedCrossings.html");
 });
 
+app.get("/VVSPLDeptManuals", function(req, res){
+  res.sendFile(__dirname + "/VVSPLDeptManuals.html");
+});
+
+app.get("/VDPLSVStationLocation", function(req, res){
+  res.sendFile(__dirname + "/VDPLSVStationLocation.html");
+});
+
+app.get("/VDPLSVStationEmergencyContacts", function(req, res){
+  res.sendFile(__dirname + "/VDPLSVStationEmergencyContacts.html");
+});
+
+app.get("/VDPLCasedCrossings", function(req, res){
+  res.sendFile(__dirname + "/VDPLCasedCrossings.html");
+});
+
+app.get("/VDPLOperations", function(req, res){
+  res.sendFile(__dirname + "/VDPLOperations.html");
+});
+
+app.get("/VDPLDeptManuals", function(req, res){
+  res.sendFile(__dirname + "/VDPLDeptManuals.html");
+});
+
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000");
 });

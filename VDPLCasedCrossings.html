@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Filter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 200px;
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .navigate-link {
+            color: blue;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<label for="casedHdd">Cased/HDD:</label>
+<select id="casedHdd" onchange="filterData()">
+    <option value="All">All</option>
+    <option value="Cased">Cased</option>
+    <option value="HDD">HDD</option>
+</select>
+
+<label for="secondaryType">Secondary Type:</label>
+<select id="secondaryType" onchange="filterData()">
+    <option value="All">All</option>
+    <option value="Canal">Canal</option>
+    <option value="Others">Others</option>
+    <option value="Railway">Railway</option>
+    <option value="River">River</option>
+    <option value="Road">Road</option>
+</select>
+
+<label for="station">Station:</label>
+<select id="station" onchange="filterData()">
+    <option value="All">All</option>
+    <option value="Vijayawada Booster Station">Vijayawada Booster Station</option>
+    <option value="Donakonda Booster Station">Donakonda Booster Station</option>
+    <option value="Kadapa Booster/Receipt Station">Kadapa Booster/Receipt Station</option>
+    <option value="Kalakada Booster Station">Kalakada Booster Station</option>
+    <option value="Dharmapuri Receiving Station">Dharmapuri Receiving Station</option>
+</select>
+
+<table id="dataTable">
+    <!-- Data will be displayed here -->
+</table>
+
+<script>
+    // Replace this array with your actual data
+    var data = [
+    { Chainage: '3.189', Name: 'Major District Road', Link: 'https://www.google.com/maps/place/16.683337,80.548612', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '3.388', Name: 'Major District Road', Link: 'https://www.google.com/maps/place/16.684649,80.547589', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '11.218', Name: 'Kondapalli Branch Canal', Link: 'https://www.google.com/maps/place/16.743473,80.512755', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '15.807', Name: 'Ibrahimpatnam Major Canal', Link: 'https://www.google.com/maps/place/16.771204,80.482105', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '20.869', Name: 'State Jogjwau', Link: 'https://www.google.com/maps/place/16.767386,80.434468', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '21.534', Name: 'Mulaparu Major Canal', Link: 'https://www.google.com/maps/place/16.767693,80.431296', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '27.535', Name: 'Mulapadu Major Left Bank Canal', Link: 'https://www.google.com/maps/place/16.738723,80.385717', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '32.397', Name: 'Mulapadu Major Canal', Link: 'https://www.google.com/maps/place/16.708867,80.354490', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '32.609', Name: 'National Highway -65', Link: 'https://www.google.com/maps/place/16.707132,80.352485', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '39.015', Name: 'Munneru River Crossing', Link: 'https://www.google.com/maps/place/16.682424,80.297525', CasedHdd: 'HDD', SecondaryType: 'River', Station: 'Vijayawada Booster Station' },
+  { Chainage: '42.088', Name: 'Asphalted Road', Link: 'https://www.google.com/maps/place/16.688765,80.272109', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '49.644', Name: 'Chandralapadu Branch', Link: 'https://www.google.com/maps/place/16.671070,80.204436', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '55.077', Name: 'Krishna River Crossing', Link: 'https://www.google.com/maps/place/16.652976,80.169664', CasedHdd: 'HDD', SecondaryType: 'River', Station: 'Vijayawada Booster Station' },
+  { Chainage: '62.719', Name: 'Major District Road', Link: 'https://www.google.com/maps/place/16.590537,80.125954', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '66.753', Name: 'Kastala Minor Canal', Link: 'https://www.google.com/maps/place/16.555500,80.096449', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '79.783', Name: 'Yerrapalem Minor Canal Cased Crssing', Link: 'https://www.google.com/maps/place/16.466229,80.037148', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '81.44', Name: 'South Central Railway', Link: 'https://www.google.com/maps/place/16.455276,80.026917', CasedHdd: 'Cased', SecondaryType: 'Railway', Station: 'Vijayawada Booster Station' },
+  { Chainage: '81.574', Name: 'State Higway -2', Link: 'https://www.google.com/maps/place/16.454228,80.026314', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '86.217', Name: 'Rajupalem Major', Link: 'https://www.google.com/maps/place/16.416572,80.001837', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '93.237', Name: 'Gorantla Major', Link: 'https://www.google.com/maps/place/16.364788,79.970070', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '97.213', Name: 'Nagarjuna Sagar Right Bank Canal', Link: 'https://www.google.com/maps/place/16.332752,79.954478', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Vijayawada Booster Station' },
+  { Chainage: '97.344', Name: 'State Highway -45', Link: 'https://www.google.com/maps/place/16.332193,79.953579', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Vijayawada Booster Station' },
+  { Chainage: '98.482', Name: 'State Highway -2', Link: 'https://www.google.com/maps/place/16.329246,79.948390', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Donakonda Booster Station' },
+  { Chainage: '103.827', Name: 'South Western Railway', Link: 'https://www.google.com/maps/place/16.300810,79.907669', CasedHdd: 'Cased', SecondaryType: 'Railway', Station: 'Donakonda Booster Station' },
+  { Chainage: '108.457', Name: 'Major Canal Annavaram', Link: 'https://www.google.com/maps/place/16.269548,79.878439', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Donakonda Booster Station' },
+  { Chainage: '110.272', Name: 'Addanki Branch Canal', Link: 'https://www.google.com/maps/place/16.257823,79.867222', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Donakonda Booster Station' },
+  { Chainage: '131.215', Name: 'State Highway-89', Link: 'https://www.google.com/maps/place/16.106147,79.752085', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Donakonda Booster Station' },
+  { Chainage: '142.781', Name: 'Surepalli Major Canal', Link: 'https://www.google.com/maps/place/16.037890,79.674404', CasedHdd: 'Cased', SecondaryType: 'Canal', Station: 'Donakonda Booster Station' },
+  { Chainage: '147.536', Name: 'National Highway -54D', Link: 'https://www.google.com/maps/place/16.011325,79.642530', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Donakonda Booster Station' },
+  { Chainage: '162.682', Name: 'Nagarjuna Sagar Right Bank Canal', Link: 'https://www.google.com/maps/place/15.909541,79.552466', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Donakonda Booster Station' },
+  { Chainage: '287.5', Name: 'State Highway-167B (Mydukuru - Markapuram)', Link: 'https://www.google.com/maps/place/15.019052,78.984491', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '307.393', Name: 'Telunganga Main Canal', Link: 'https://www.google.com/maps/place/14.889792,78.878512', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '317.411', Name: 'Telunganga Main Canal', Link: 'https://www.google.com/maps/place/14.853366,78.788964', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '319.84', Name: 'State Highway-167B (Mydukuru - Markapuram)', Link: 'https://www.google.com/maps/place/14.832242,78.785197', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '332.864', Name: 'National Highway - 67 (Mydukuru - Badvel)', Link: 'https://www.google.com/maps/place/14.719044,78.790006', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '352.4', Name: 'Penna River Crossing', Link: 'https://www.google.com/maps/place/14.561343,78.831517', CasedHdd: 'HDD', SecondaryType: 'River', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '371.742', Name: 'State Highway - 56 (Machupalle - Siddavatam)', Link: 'https://www.google.com/maps/place/14.454177,78.961310', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '377.895', Name: 'National Highway - 71 (Kadapa - Tirupati)', Link: 'https://www.google.com/maps/place/14.416356,78.950720', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '378', Name: 'Hpcl+South Central Railway Crossing', Link: 'https://www.google.com/maps/place/14.415776,78.950354', CasedHdd: 'HDD', SecondaryType: 'Railway', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '379.414', Name: 'Railway Crossing', Link: 'https://www.google.com/maps/place/14.414251,78.938791', CasedHdd: 'HDD', SecondaryType: 'Railway', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '387.19', Name: 'Nagaravanam Park Entrance', Link: 'https://www.google.com/maps/place/14.432630,78.880117', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '387.55', Name: 'Nagrawaram Forest Park Road Kadapa', Link: 'https://www.google.com/maps/place/14.430714,78.876759', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '400.768', Name: 'National Highway-40 (Kadapa-Rayachoti)', Link: 'https://www.google.com/maps/place/14.370861,78.789836', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+  { Chainage: '400.951', Name: 'National Highway-18 (Kadapa- Rayachoty)', Link: 'https://www.google.com/maps/place/14.370419,78.789528', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kadapa Booster/Receipt Station' },
+ { Chainage: '402', Name: 'Ch 402 Newly Constructed Canal', Link: 'https://www.google.com/maps/place/14.361760,78.784862', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Kadapa Booster/Receipt Station' },
+{ Chainage: '430.644', Name: 'Mdr Road Crossing (Nadigaddapalle - Lakkireddipalle)', Link: 'https://www.google.com/maps/place/14.135522,78.729395', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '439.967', Name: 'State Highway-34 (Rayachoty- Boyapalle)', Link: 'https://www.google.com/maps/place/14.054914,78.723022', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '442.962', Name: 'National Highway-340 (Rayachoty- Chinnamandem)', Link: 'https://www.google.com/maps/place/14.029300,78.732136', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '466', Name: 'Satyavati River Crossing', Link: 'https://www.google.com/maps/place/13.817938,78.72523', CasedHdd: 'HDD', SecondaryType: 'River', Station: 'Kalakada Booster Station' },
+{ Chainage: '488.252', Name: 'National Highway-71 (Chintaparti- Velpayad)', Link: 'https://www.google.com/maps/place/13.704274,78.708362', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '489.122', Name: 'South Central Railway Line Crossing', Link: 'https://www.google.com/maps/place/13.630812,78.683240', CasedHdd: 'Cased', SecondaryType: 'Railway', Station: 'Kalakada Booster Station' },
+{ Chainage: '526.008', Name: 'National Highway-42 (Ramapuram - Punganuru)', Link: 'https://www.google.com/maps/place/13.343555,78.604553', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '526.08', Name: 'National Highway-42 Bypass (Ramapuram - Punganuru)', Link: 'https://www.google.com/maps/place/13.342303,78.604636', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '542.999', Name: 'National Highway-4 (Gandrajupalle - Alakuppam)', Link: 'https://www.google.com/maps/place/13.198978,78.576626', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '557', Name: 'Proposed Bangalore-Chennai Expressway', Link: 'https://www.google.com/maps/place/13.087470,78.553854', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '560.371', Name: 'National Highway-234 (Kasturinagaram - Mornspalle)', Link: 'https://www.google.com/maps/place/13.067168,78.531564', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Kalakada Booster Station' },
+{ Chainage: '563.462', Name: 'V.Kota Road', Link: 'https://www.google.com/maps/place/13.049978,78.528825', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '566.813', Name: 'Canal Crossing', Link: 'https://www.google.com/maps/place/13.023045,78.516420', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '604.757', Name: 'Pond & Road Crossing', Link: 'https://www.google.com/maps/place/12.755163,78.359982', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '608.706', Name: 'Railway Crossing', Link: 'https://www.google.com/maps/place/12.722979,78.367421', CasedHdd: 'Cased', SecondaryType: 'Railway', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '618.006', Name: 'Tn-Ap Border', Link: 'https://www.google.com/maps/place/12.655865,78.322731', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '619.015', Name: 'Temple Crossing', Link: 'https://www.google.com/maps/place/12.651975,78.316968', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '622.115', Name: 'Drain & Shop Crossing', Link: 'https://www.google.com/maps/place/12.627050,78.325847', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '623.516', Name: 'Shop Crossing', Link: 'https://www.google.com/maps/place/12.613173,78.325911', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '625.812', Name: 'Petrol Bunk', Link: 'https://www.google.com/maps/place/12.598452,78.313267', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '628.848', Name: 'Varatnapalli Petrol Bunk', Link: 'https://www.google.com/maps/place/12.577143,78.301846', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '636.76', Name: 'Krishnagiri Polytechnic College', Link: 'https://www.google.com/maps/place/12.534652,78.248717', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '637.701', Name: 'Krishnagiri Murugan Temple', Link: 'https://www.google.com/maps/place/12.532195,78.240214', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '639.101', Name: 'Tonnaiyan Kottai, Krishnagiri', Link: 'https://www.google.com/maps/place/12.523355,78.231393', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '640.056', Name: 'Canal Crossing', Link: 'https://www.google.com/maps/place/12.515411,78.230146', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '641.138', Name: 'Narrow Crossing', Link: 'https://www.google.com/maps/place/12.508044,78.223006', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '641.229', Name: 'Nh-48 Crossing', Link: 'https://www.google.com/maps/place/12.507472,78.223218', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '641.734', Name: 'Nala & Iocl Petrol Pump Crossing', Link: 'https://www.google.com/maps/place/12.504759,78.223654', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '644.194', Name: 'Nala Crossing', Link: 'https://www.google.com/maps/place/12.482061,78.216710', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '645.844', Name: 'Nala & Road Crossing', Link: 'https://www.google.com/maps/place/12.468449,78.214238', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '646.195', Name: 'Nala & Road Crossing', Link: 'https://www.google.com/maps/place/12.463970,78.214441', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '646.432', Name: 'Drain, Shop & Mud Road Crossing', Link: 'https://www.google.com/maps/place/12.461909,78.214677', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '648.34', Name: 'Road Crossing', Link: 'https://www.google.com/maps/place/12.445170,78.218291', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '650.02', Name: 'Road Crossing', Link: 'https://www.google.com/maps/place/12.433170,78.223988', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '651.222', Name: 'Thenponnaiyar River Crossing', Link: 'https://www.google.com/maps/place/12.422921,78.226811', CasedHdd: 'HDD', SecondaryType: 'River', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '651.753', Name: 'Embankment Crossing', Link: 'https://www.google.com/maps/place/12.417218,78.225402', CasedHdd: 'HDD', SecondaryType: 'Others', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '651.833', Name: 'Agaram Road, Kaveripattinam', Link: 'https://www.google.com/maps/place/12.417059,78.225321', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '652.986', Name: 'Embankment & Asphalted Road Crossing', Link: 'https://www.google.com/maps/place/12.406723,78.223572', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '653.468', Name: 'Pond Crossing', Link: 'https://www.google.com/maps/place/12.403962,78.221232', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '663.883', Name: 'Agaram Road Karimangalam', Link: 'https://www.google.com/maps/place/12.314687,78.207803', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '665.071', Name: 'Morappur Road, Karimangalam Flyover', Link: 'https://www.google.com/maps/place/12.303839,78.208575', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '665.462', Name: 'Canal Crossing', Link: 'https://www.google.com/maps/place/12.301033,78.207630', CasedHdd: 'HDD', SecondaryType: 'Canal', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '674.28', Name: 'Matlampatti Village', Link: 'https://www.google.com/maps/place/12.229369,78.194715', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '675.208', Name: 'Matlampatti Village', Link: 'https://www.google.com/maps/place/12.219925,78.191796', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '681.009', Name: 'Tower Crossing', Link: 'https://www.google.com/maps/place/12.172927,78.169696', CasedHdd: 'HDD', SecondaryType: 'Others', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '681.408', Name: 'Gundalapatti', Link: 'https://www.google.com/maps/place/12.170009,78.168275', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '683.315', Name: 'Savuloor Flyover', Link: 'https://www.google.com/maps/place/12.158788,78.155009', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '684.344', Name: 'Embankment Crossing', Link: 'https://www.google.com/maps/place/12.152302,78.148955', CasedHdd: 'HDD', SecondaryType: 'Others', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '684.584', Name: 'Embankment Area Crossing', Link: 'https://www.google.com/maps/place/12.150668,78.147661', CasedHdd: 'HDD', SecondaryType: 'Others', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '684.739', Name: 'Kovilur Flyover - Railway Crossing', Link: 'https://www.google.com/maps/place/12.149274,78.146244', CasedHdd: 'Cased', SecondaryType: 'Railway', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '685.938', Name: 'Pennagaram Flyover', Link: 'https://www.google.com/maps/place/12.140637,78.140135', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '686.512', Name: 'Road Crossing', Link: 'https://www.google.com/maps/place/12.133882,78.137794', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '690.389', Name: 'Thadangam Flyover', Link: 'https://www.google.com/maps/place/12.103972,78.125018', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '693.514', Name: 'Pond & Road Crossing', Link: 'https://www.google.com/maps/place/12.079175,78.111605', CasedHdd: 'HDD', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '695.856', Name: 'Nallampalli', Link: 'https://www.google.com/maps/place/12.058127,78.108353', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+{ Chainage: '696.658', Name: 'Seshampatti', Link: 'https://www.google.com/maps/place/12.051099,78.107230', CasedHdd: 'Cased', SecondaryType: 'Road', Station: 'Dharmapuri Receiving Station' },
+
+        // Add more data...
+    ];
+
+    // Initial data display
+    displayData();
+
+    function displayData() {
+        var table = document.getElementById('dataTable');
+        // Clear existing rows
+        table.innerHTML = '';
+
+        // Add header row
+        var headerRow = table.insertRow(0);
+        for (var key in data[0]) {
+            if (data[0].hasOwnProperty(key)) {
+                var th = document.createElement('th');
+                th.innerHTML = key;
+                headerRow.appendChild(th);
+            }
+        }
+
+        // Add data rows
+        for (var i = 0; i < data.length; i++) {
+            var row = table.insertRow(-1);
+            for (var key in data[i]) {
+                if (data[i].hasOwnProperty(key)) {
+                    var cell = row.insertCell(-1);
+                    if (key === 'Link') {
+                        cell.innerHTML = `<span class="navigate-link" onclick="openMap('${data[i][key]}')">Navigate</span>`;
+                    } else {
+                        cell.innerHTML = data[i][key];
+                    }
+                }
+            }
+        }
+    }
+
+    function filterData() {
+        var casedHdd = document.getElementById('casedHdd').value;
+        var secondaryType = document.getElementById('secondaryType').value;
+        var station = document.getElementById('station').value;
+
+        var filteredData = data.filter(function(item) {
+            return (casedHdd === 'All' || item.CasedHdd === casedHdd) &&
+                   (secondaryType === 'All' || item.SecondaryType === secondaryType) &&
+                   (station === 'All' || item.Station === station);
+        });
+
+        // Update the displayed data
+        data = filteredData;
+        displayData();
+    }
+
+    function openMap(link) {
+        window.open(link, '_blank');
+    }
+</script>
+
+</body>
+</html>

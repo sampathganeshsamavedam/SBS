@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>SV Station Emergency Contactss</title>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h3>Select the CP/SV station</h3>
+    <div class="mb-3">
+        <select class="form-select bg-dark text-light custom-select-lg" id="tableSelector" onchange="displayTable()">
+            <!--<option value="none">Select Table</option>-->
+             <option value="SV-1">SV-1</option>
+             <option value="SV-2">SV-2</option>
+             <option value="SV-3">SV-3</option>
+             <option value="SV-4">SV-4</option>
+             <option value="SV-5">SV-5</option>
+             <option value="SV-6">SV-6</option>
+             <option value="SV-7">SV-7</option>
+             <option value="SV-8">SV-8</option>
+             <option value="SV-9">SV-9</option>
+             <option value="SV-10">SV-10</option>
+             <option value="SV-11">SV-11</option>
+             <option value="SV-12">SV-12</option>
+             <option value="SV-13">SV-13</option>
+             <option value="SV-14">SV-14</option>
+             <option value="SV-15">SV-15</option>
+             <option value="SV-16">SV-16</option>
+             <option value="SV-17">SV-17</option>
+        </select>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <div id="tableContainer" class="mt-3" style="display: none;">
+        <!-- Tables will be displayed here -->
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function displayTable() {
+        var tableSelector = document.getElementById("tableSelector");
+        var selectedTable = tableSelector.value;
+        var tableContainer = document.getElementById("tableContainer");
+
+        // Hide all tables
+        var allTables = document.querySelectorAll("[data-table]");
+        allTables.forEach(function (table) {
+            table.style.display = "none";
+        });
+
+        // Display the selected table
+        if (selectedTable !== "none") {
+            var selectedTableElement = document.getElementById(selectedTable);
+            if (selectedTableElement) {
+                selectedTableElement.style.display = "block";
+                tableContainer.style.display = "block";
+            } else {
+                tableContainer.style.display = "none";
+            }
+        } else {
+            tableContainer.style.display = "none";
+        }
+    }
+</script>
+
+<!-- CP Tables -->
+
+<div id="SV-1" class="container" data-table>
+  <h4>SV-1 Emergency Contacts</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fire Station-Kanchikacherla</td>
+        <td>08678-274444<br>9963724297</td>
+      </tr>
+      <tr>
+        <td>Hospital- Kanchikacherla</td>
+        <td>9133656312</td>
+      </tr>
+      <tr>
+        <td>Police Station-Verullapdu</td>
+        <td>9550796458</td>
+      </tr>
+      <tr>
+        <td>Electricity Sub Station - Alluru</td>
+        <td>9440812142</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+<div id="SV-2" class="container" data-table>
+  <h4>SV-02 Emergency Contacts</h4>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Fire Station-Nandigama</td>
+        <td>08678-275400<br>9963724409</td>
+      </tr>
+      <tr>
+        <td>Hospital- Nandigama</td>
+        <td>9491078525</td>
+      </tr>
+      <tr>
+        <td>Police Station-Chandralapadu</td>
+        <td>9849903987</td>
+      </tr>
+      <tr>
+        <td>Electricity Sub Station - Challagundla</td>
+        <td>9440812143</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="SV-3" class="container" data-table>
+  <h4>SV-03 Emergency Contacts</h4>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fire Station-Sattenapalli</td>
+      <td>08641-232101<br>9963732688</td>
+    </tr>
+    <tr>
+      <td>Hospital- Sattenapalli</td>
+      <td>08641-232213</td>
+    </tr>
+    <tr>
+      <td>Police Station-Atchampet</td>
+      <td>9440796234</td>
+    </tr>
+    <tr>
+      <td>Electricity Sub Station - Atchampet</td>
+      <td>9490615577<br>9440817541</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-4" class="container" data-table>
+  <h4>SV-04 Emergency Contacts</h4>
+  <table class="table table-bordered">
+<thead>
+<tr>
+  <th scope="col">Description</th>
+  <th scope="col">Contact No.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Police Station - Epur</td>
+  <td>8646258333</td>
+</tr>
+<tr>
+  <td>Fire Station - Vinukonda</td>
+  <td>8646272101<br>9963732581</td>
+</tr>
+<tr>
+  <td>Hospital - Vinukonda</td>
+  <td>8646273273</td>
+</tr>
+<tr>
+  <td>Electricity Sub Station - Epur</td>
+  <td>8646258330<br>9440814276</td>
+</tr>
+<tr>
+  <td>Electricity AE</td>
+  <td>9440814307</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="SV-5" class="container" data-table>
+    <h4>SV-05 Emergency Contacts</h4>
+    <table class="table table-bordered">
+
+    </table>
+</div>
+
+<div id="SV-6" class="container" data-table>
+    <h4>SV-06 Emergency Contact</h4>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Police Station - Tarlupadu</td>
+        <td>9121102176<br>2596222099</td>
+      </tr>
+      <tr>
+        <td>Fire Station - Markapur</td>
+        <td>9963733293</td>
+      </tr>
+      <tr>
+        <td>Hospital - Tarlupadu</td>
+        <td>9000320313</td>
+      </tr>
+      <tr>
+        <td>Electricity Sub Station</td>
+        <td>9490615464</td>
+      </tr>
+      <tr>
+        <td>Electricity AE</td>
+        <td>9490812238</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="SV-7" class="container" data-table>
+    <h4>SV-07 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9121102188</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Giddalur</td>
+      <td>08405-242099</td>
+    </tr>
+    <tr>
+      <td>Ambulance</td>
+      <td>9666015321</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>7386647567</td>
+    </tr>
+    <tr>
+      <td>Electricity Sub Station</td>
+      <td>9490615804</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9490615804</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-8" class="container" data-table>
+    <h4>SV-08 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>8074502219</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Mydukur</td>
+      <td>08564-203101, 9963737731</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>9818380607</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9440811952</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-9" class="container" data-table>
+    <h4>SV-09 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9121100623</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Kajipeta</td>
+      <td>08564-263101</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>9441635831</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9440811927</td>
+    </tr>
+    <tr>
+      <td>Electricity Sub Station</td>
+      <td>9490615144</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-10" class="container" data-table>
+    <h4>SV-10 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9121100519</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Kadapa</td>
+      <td>9963737191<br>08562-87400</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>9966659797</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9440811925</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-11" class="container" data-table>
+    <h4>SV-11 Emergency Contact</h4>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Description</th>
+        <th scope="col">Contact No.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Police Station</td>
+        <td>9121100558</td>
+      </tr>
+      <tr>
+        <td>Fire Station - Lakkireddypalle</td>
+        <td>08567-234199<br>9963737731</td>
+      </tr>
+      <tr>
+        <td>Hospital</td>
+        <td>9966659797</td>
+      </tr>
+      <tr>
+        <td>Electricity Sub Station</td>
+        <td>8985910216</td>
+      </tr>
+      <tr>
+        <td>Electricity AE</td>
+        <td>9440814307</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="SV-12" class="container" data-table>
+    <h4>SV-12 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9154960160</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Rayachoti</td>
+      <td>9963737253</td>
+    </tr>
+    <tr>
+      <td>Hospital- Rayachoti</td>
+      <td>9381807887</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-13" class="container" data-table>
+    <h4>SV-13 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9440900005</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Madanapalli</td>
+      <td>9963735597</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Piler</td>
+      <td>9963736587</td>
+    </tr>
+    <tr>
+      <td>Hospital - Madanapalle</td>
+      <td>9502283150</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-14" class="container" data-table>
+    <h4>SV-14 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9440900005</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Punganuru</td>
+      <td>9963736640</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Palamaner</td>
+      <td>9963735975</td>
+    </tr>
+    <tr>
+      <td>Hospital - Palamaner</td>
+      <td>9963040316</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-15" class="container" data-table>
+    <h4>SV-15 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9440900704</td>
+    </tr>
+    <tr>
+      <td>SP Office</td>
+      <td>8572235700</td>
+    </tr>
+    <tr>
+      <td>Fire Station</td>
+      <td>8570255099</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>9959525367</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9440625606</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-16" class="container" data-table>
+    <h4>SV-16 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>9498101107</td>
+    </tr>
+    <tr>
+      <td>SP Office</td>
+      <td>9498101090</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Krishnagiri</td>
+      <td>04343-265101</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Bargur</td>
+      <td>04343-265601</td>
+    </tr>
+    <tr>
+      <td>Hospital - Krishnagiri</td>
+      <td>9499966133</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9445855515</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div id="SV-17" class="container" data-table>
+    <h4>SV-17 Emergency Contact</h4>
+    <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Description</th>
+      <th scope="col">Contact No.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Police Station</td>
+      <td>04348-241226</td>
+    </tr>
+    <tr>
+      <td>SP Office</td>
+      <td>9498101055</td>
+    </tr>
+    <tr>
+      <td>Fire Station - Palacode</td>
+      <td>04348-222101</td>
+    </tr>
+    <tr>
+      <td>Hospital</td>
+      <td>927669446</td>
+    </tr>
+    <tr>
+      <td>Electricity AE</td>
+      <td>9445855494</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+</body>
+</html>
