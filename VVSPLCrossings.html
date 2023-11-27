@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Road crossings locations</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      margin: 20px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Links Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
 
-    input {
-      padding: 8px;
-      margin: 5px;
-    }
-
-    #result {
-      margin-top: 20px;
-    }
-  </style>
+        #result {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
+    <h2>Google Maps Links Finder</h2>
+    <label for="decimalInput">Enter a Decimal:</label>
+    <input type="number" step="any" id="decimalInput" placeholder="Enter a decimal">
+    <button onclick="findLinks()">Find Links</button>
 
-  <h2>Location Finder</h2>
+    <div id="result"></div>
 
-  <form onsubmit="findLocation(); return false;">
-    <label for="number">Enter a decimal number:</label>
-    <input type="number" step="0.001" id="number" required>
-    <button type="submit">Find Location</button>
-  </form>
+    <script>
+        // Your data
+        const data = [
+            { number: 0.4, link: "https://www.google.com/maps/place/17.289339,82.273733" },
+            // ... (Add your other data entries here)
+        ];
 
-  <div id="result"></div>
+        function findLinks() {
+            // Get the input value
+            const inputValue = parseFloat(document.getElementById('decimalInput').value);
 
-  <script>
-    // Replace the sample data with your latitude and longitude data
-    const locationData = [
-      { number: 1.234, location: '1.234, 2.345' },
-      { number: 2.345, location: '2.345, 3.456' },
-      // Add more data as needed
-    ];
+            // Find the closest number in the data
+            const closestEntry = data.reduce((prev, curr) => {
+                return (Math.abs(curr.number - inputValue) < Math.abs(prev.number - inputValue) ? curr : prev);
+            });
 
-    function findLocation() {
-      const inputNumber = parseFloat(document.getElementById('number').value);
+            // Display links within a range of +/- 2
+            const linksInRange = data.filter(entry => entry.number >= closestEntry.number - 2 && entry.number <= closestEntry.number + 2);
 
-      const resultElement = document.getElementById('result');
+            // Display the result
+            displayResult(linksInRange);
+        }
 
-      const foundLocation = locationData.find(item => Math.abs(item.number - inputNumber) <= 0.002);
+        function displayResult(links) {
+            const resultContainer = document.getElementById('result');
+            resultContainer.innerHTML = "<h3>Result:</h3>";
 
-      if (foundLocation) {
-        resultElement.textContent = `Location for ${inputNumber}: ${foundLocation.location}`;
-      } else {
-        resultElement.textContent = `No location found for ${inputNumber}`;
-      }
-    }
-  </script>
-
+            if (links.length === 0) {
+                resultContainer.innerHTML += "<p>No links found within the specified range.</p>";
+            } else {
+                links.forEach(entry => {
+                    resultContainer.innerHTML += `<p>${entry.number}: <a href="${entry.link}" target="_blank">${entry.link}</a></p>`;
+                });
+            }
+        }
+    </script>
 </body>
 </html>
-
