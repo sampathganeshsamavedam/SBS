@@ -160,46 +160,50 @@
         // Add more data...
     ];
 
-    // Initial data display
-    function filterData() {
-         var casedHdd = document.getElementById("casedHdd").value;
-         var secondaryType = document.getElementById("secondaryType").value;
-         var station = document.getElementById("station").value;
+   function filterData() {
+        var selectedCasedHdd = document.getElementById("casedHdd").value;
+        var selectedSecondaryType = document.getElementById("secondaryType").value;
+        var selectedStation = document.getElementById("station").value;
 
-         var filteredData = data.filter(function (item) {
-             return (casedHdd === "All" || item.CasedHdd === casedHdd) &&
-                    (secondaryType === "All" || item.SecondaryType === secondaryType) &&
-                    (station === "All" || item.Station === station);
-         });
+        var filteredData = data.filter(function (item) {
+            return (selectedCasedHdd === "All" || item.CasedHdd === selectedCasedHdd) &&
+                (selectedSecondaryType === "All" || item.SecondaryType === selectedSecondaryType) &&
+                (selectedStation === "All" || item.Station === selectedStation);
+        });
 
-         displayData(filteredData);
-     }
+        displayData(filteredData);
+    }
 
-     function displayData(data) {
-         var table = document.getElementById("dataTable");
+    function displayData(filteredData) {
+        var table = document.getElementById("dataTable");
 
-         // Clear previous data
-         table.innerHTML = "";
+        // Clear existing table data
+        table.innerHTML = "";
 
-         // Add new data
-         data.forEach(function (item) {
-             var row = table.insertRow();
-             var cell1 = row.insertCell(0);
-             var cell2 = row.insertCell(1);
-             var cell3 = row.insertCell(2);
-             var cell4 = row.insertCell(3);
-             var cell5 = row.insertCell(4);
+        // Create table header
+        var headerRow = table.insertRow(0);
+        headerRow.insertCell(0).textContent = "Station";
+        headerRow.insertCell(1).textContent = "Chainage";
+        headerRow.insertCell(2).textContent = "Navigate";
 
-             cell1.innerHTML = item.Chainage;
-             cell2.innerHTML = item.Name;
-             cell3.innerHTML = item.CasedHdd;
-             cell4.innerHTML = item.SecondaryType;
-             cell5.innerHTML = item.Station;
-         });
-     }
+        // Create table rows
+        filteredData.forEach(function (item) {
+            var row = table.insertRow(-1);
+            row.insertCell(0).textContent = item.Station;
+            row.insertCell(1).textContent = item.Chainage;
 
-     // Initial display
-     displayData(data);
+            // Create "Navigate" button for Google Maps link
+            var navigateCell = row.insertCell(2);
+            var navigateButton = document.createElement("a");
+            navigateButton.href = item.Link;
+            navigateButton.target = "_blank";
+            navigateButton.textContent = "Navigate";
+            navigateCell.appendChild(navigateButton);
+        });
+    }
+
+    // Initial display
+    displayData(data);
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
