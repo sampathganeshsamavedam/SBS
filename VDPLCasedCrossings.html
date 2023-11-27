@@ -3,39 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Filter</title>
+    <title>VDPL Crossings</title>
+    <!-- Add Bootstrap CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        select {
-            width: 200px;
-            margin-bottom: 10px;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
             margin-top: 20px;
-        }
-
-        table, th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        .navigate-link {
-            color: blue;
-            cursor: pointer;
-            text-decoration: underline;
         }
     </style>
 </head>
@@ -181,59 +161,50 @@
     ];
 
     // Initial data display
-    displayData();
-
-    function displayData() {
-        var table = document.getElementById('dataTable');
-        // Clear existing rows
-        table.innerHTML = '';
-
-        // Add header row
-        var headerRow = table.insertRow(0);
-        for (var key in data[0]) {
-            if (data[0].hasOwnProperty(key)) {
-                var th = document.createElement('th');
-                th.innerHTML = key;
-                headerRow.appendChild(th);
-            }
-        }
-
-        // Add data rows
-        for (var i = 0; i < data.length; i++) {
-            var row = table.insertRow(-1);
-            for (var key in data[i]) {
-                if (data[i].hasOwnProperty(key)) {
-                    var cell = row.insertCell(-1);
-                    if (key === 'Link') {
-                        cell.innerHTML = `<span class="navigate-link" onclick="openMap('${data[i][key]}')">Navigate</span>`;
-                    } else {
-                        cell.innerHTML = data[i][key];
-                    }
-                }
-            }
-        }
-    }
-
     function filterData() {
-        var casedHdd = document.getElementById('casedHdd').value;
-        var secondaryType = document.getElementById('secondaryType').value;
-        var station = document.getElementById('station').value;
+         var casedHdd = document.getElementById("casedHdd").value;
+         var secondaryType = document.getElementById("secondaryType").value;
+         var station = document.getElementById("station").value;
 
-        var filteredData = data.filter(function(item) {
-            return (casedHdd === 'All' || item.CasedHdd === casedHdd) &&
-                   (secondaryType === 'All' || item.SecondaryType === secondaryType) &&
-                   (station === 'All' || item.Station === station);
-        });
+         var filteredData = data.filter(function (item) {
+             return (casedHdd === "All" || item.CasedHdd === casedHdd) &&
+                    (secondaryType === "All" || item.SecondaryType === secondaryType) &&
+                    (station === "All" || item.Station === station);
+         });
 
-        // Update the displayed data
-        data = filteredData;
-        displayData();
-    }
+         displayData(filteredData);
+     }
 
-    function openMap(link) {
-        window.open(link, '_blank');
-    }
+     function displayData(data) {
+         var table = document.getElementById("dataTable");
+
+         // Clear previous data
+         table.innerHTML = "";
+
+         // Add new data
+         data.forEach(function (item) {
+             var row = table.insertRow();
+             var cell1 = row.insertCell(0);
+             var cell2 = row.insertCell(1);
+             var cell3 = row.insertCell(2);
+             var cell4 = row.insertCell(3);
+             var cell5 = row.insertCell(4);
+
+             cell1.innerHTML = item.Chainage;
+             cell2.innerHTML = item.Name;
+             cell3.innerHTML = item.CasedHdd;
+             cell4.innerHTML = item.SecondaryType;
+             cell5.innerHTML = item.Station;
+         });
+     }
+
+     // Initial display
+     displayData(data);
 </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
