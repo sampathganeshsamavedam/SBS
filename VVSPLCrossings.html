@@ -1,1 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Road crossings locations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Location Finder</h2>
+
+  <form onsubmit="findLocation(); return false;">
+    <label for="number">Enter a decimal number:</label>
+    <input type="number" step="0.001" id="number" required>
+    <button type="submit">Find Location</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    // Replace the sample data with your latitude and longitude data
+    const locationData = [
+      { number: 1.234, location: '1.234, 2.345' },
+      { number: 2.345, location: '2.345, 3.456' },
+      // Add more data as needed
+    ];
+
+    function findLocation() {
+      const inputNumber = parseFloat(document.getElementById('number').value);
+
+      const resultElement = document.getElementById('result');
+
+      const foundLocation = locationData.find(item => Math.abs(item.number - inputNumber) <= 0.002);
+
+      if (foundLocation) {
+        resultElement.textContent = `Location for ${inputNumber}: ${foundLocation.location}`;
+      } else {
+        resultElement.textContent = `No location found for ${inputNumber}`;
+      }
+    }
+  </script>
+
+</body>
+</html>
 
