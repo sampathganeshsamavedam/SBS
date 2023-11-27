@@ -434,6 +434,10 @@ app.get("/VVSPLCasedCrossings", function(req, res){
   res.sendFile(__dirname + "/VVSPLCasedCrossings.html");
 });
 
+app.get("/VVSPLCrossings", function(req, res){
+  res.sendFile(__dirname + "/VVSPLCrossings.html");
+});
+
 app.get("/VVSPLDeptManuals", function(req, res){
   res.sendFile(__dirname + "/VVSPLDeptManuals.html");
 });
