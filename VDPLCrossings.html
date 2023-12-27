@@ -1,1 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Maps Links Finder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Chainage wise locations of Road crossings</h2>
+    <label for="decimalInput">Enter a Chainage:</label>
+    <input type="number" step="any" id="decimalInput" placeholder="Enter a decimal">
+    <button onclick="findLinks()">Get Google location link</button>
+
+    <div id="result"></div>
+
+    <script>
+        // Your data
+        const data = [
+  {
+  "number": 29.186,
+  "link": "https://www.google.com/maps/place/ 16.727829°, 80.375634°"
+ },
+ {
+  "number": 26.776,
+  "link": "https://www.google.com/maps/place/ 16.744627°, 80.389416°"
+ },
+ {
+  "number": 25.147,
+  "link": "https://www.google.com/maps/place/ 16.755073°, 80.399981°"
+ },
+ {
+  "number": 23.93,
+  "link": "https://www.google.com/maps/place/ 16.759805°, 80.410315°"
+ },
+ {
+  "number": 20.752,
+  "link": "https://www.google.com/maps/place/ 16.767131°, 80.437308°"
+ },
+ {
+  "number": 14.906999999999998,
+  "link": "https://www.google.com/maps/place/ 16.769457°, 80.485113°"
+ },
+ {
+  "number": 13.769,
+  "link": "https://www.google.com/maps/place/ 16.761714°, 80.498305°"
+ },
+ {
+  "number": 7.197999999999999,
+  "link": "https://www.google.com/maps/place/ 16.719309°, 80.529418°"
+ },
+ {
+  "number": 3.254,
+  "link": "https://www.google.com/maps/place/ 16.684649°, 80.547589°"
+ },
+ {
+  "number": 3.074,
+  "link": "https://www.google.com/maps/place/ 16.683337°, 80.548612°"
+ },
+ {
+  "number": 2.659,
+  "link": "https://www.google.com/maps/place/ 16.679477°, 80.551628°"
+ },
+ {
+  "number": 38.087,
+  "link": "https://www.google.com/maps/place/ 16.681873°, 80.308514°"
+ },
+ {
+  "number": 41.966,
+  "link": "https://www.google.com/maps/place/ 16.688735°, 80.272245°"
+ },
+ {
+  "number": 48.332,
+  "link": "https://www.google.com/maps/place/ 16.674079°, 80.215984°"
+ },
+ {
+  "number": 50.332,
+  "link": "https://www.google.com/maps/place/ 16.669488°, 80.198023°"
+ },
+ {
+  "number": 95.189,
+  "link": "https://www.google.com/maps/place/ 16.347127°, 79.964264°"
+ },
+ {
+  "number": 94.685,
+  "link": "https://www.google.com/maps/place/ 16.349903°, 79.965326°"
+ },
+ {
+  "number": 91.578,
+  "link": "https://www.google.com/maps/place/ 16.378048°, 79.976646°"
+ },
+ {
+  "number": 88.927,
+  "link": "https://www.google.com/maps/place/ 16.398068°, 79.988013°"
+ },
+ {
+  "number": 82.137,
+  "link": "https://www.google.com/maps/place/ 16.446455°, 80.021530°"
+ },
+ {
+  "number": 81.53,
+  "link": "https://www.google.com/maps/place/ 16.454100°, 80.026231°"
+ },
+ {
+  "number": 81,
+  "link": "https://www.google.com/maps/place/16.458766,80.029265"
+ },
+ {
+  "number": 78.245,
+  "link": "https://www.google.com/maps/place/ 16.476134°, 80.047247°"
+ },
+ {
+  "number": 76.796,
+  "link": "https://www.google.com/maps/place/ 16.484460°, 80.056381°"
+ },
+ {
+  "number": 74.401,
+  "link": "https://www.google.com/maps/place/ 16.502668°, 80.067885°"
+ },
+ {
+  "number": 73.357,
+  "link": "https://www.google.com/maps/place/ 16.508520°, 80.072503°"
+ },
+ {
+  "number": 68.99000000000001,
+  "link": "https://www.google.com/maps/place/ 16.544805°, 80.089059°"
+ },
+ {
+  "number": 63.872,
+  "link": "https://www.google.com/maps/place/ 16.582414°, 80.119106°"
+ },
+ {
+  "number": 62.656,
+  "link": "https://www.google.com/maps/place/ 16.590627°, 80.126691°"
+ },
+ {
+  "number": 104.44,
+  "link": "https://www.google.com/maps/place/ 16.296780°, 79.902934°"
+ },
+ {
+  "number": 105.601,
+  "link": "https://www.google.com/maps/place/ 16.287787°, 79.897527°"
+ },
+ {
+  "number": 111.985,
+  "link": "https://www.google.com/maps/place/ 16.243265°, 79.855121°"
+ },
+ {
+  "number": 146.37,
+  "link": "https://www.google.com/maps/place/ 16.019163°, 79.644432°"
+ },
+ {
+  "number": 142.061,
+  "link": "https://www.google.com/maps/place/ 16.040349°, 79.675703°"
+ },
+ {
+  "number": 141.987,
+  "link": "https://www.google.com/maps/place/ 16.044279°, 79.677543°"
+ },
+ {
+  "number": 136.231,
+  "link": "https://www.google.com/maps/place/ 16.074711°, 79.714098°"
+ },
+ {
+  "number": 131.241,
+  "link": "https://www.google.com/maps/place/ 16.106203°, 79.751898°"
+ },
+ {
+  "number": 129.715,
+  "link": "https://www.google.com/maps/place/ 16.114625°, 79.757790°"
+ },
+ {
+  "number": 126.296,
+  "link": "https://www.google.com/maps/place/ 16.142676°, 79.776823°"
+ },
+ {
+  "number": 119.272,
+  "link": "https://www.google.com/maps/place/ 16.190687°, 79.814921°"
+ },
+ {
+  "number": 154.354,
+  "link": "https://www.google.com/maps/place/ 15.962087°, 79.605730°"
+ },
+ {
+  "number": 160.104,
+  "link": "https://www.google.com/maps/place/ 15.925579°, 79.567388°"
+ },
+ {
+  "number": 160.81,
+  "link": "https://www.google.com/maps/place/ 15.921566°, 79.562505°"
+ },
+ {
+  "number": 166.03,
+  "link": "https://www.google.com/maps/place/ 15.886745°, 79.534149°"
+ },
+ {
+  "number": 166.476,
+  "link": "https://www.google.com/maps/place/ 15.883851°, 79.531397°"
+ },
+ {
+  "number": 166.924,
+  "link": "https://www.google.com/maps/place/ 15.880855°, 79.528555°"
+ },
+ {
+  "number": 166.656,
+  "link": "https://www.google.com/maps/place/ 15.879384°, 79.527158°"
+ },
+ {
+  "number": 173.967,
+  "link": "https://www.google.com/maps/place/ 15.846125°, 79.476560°"
+ },
+ {
+  "number": 175.949,
+  "link": "https://www.google.com/maps/place/ 15.835971°, 79.461953°"
+ },
+ {
+  "number": 180.213,
+  "link": "https://www.google.com/maps/place/ 15.814098°, 79.427439°"
+ },
+ {
+  "number": 207.20200000000003,
+  "link": "https://www.google.com/maps/place/ 15.657280°, 79.238887°"
+ },
+ {
+  "number": 203.445,
+  "link": "https://www.google.com/maps/place/ 15.677423°, 79.265773°"
+ },
+ {
+  "number": 199.951,
+  "link": "https://www.google.com/maps/place/ 15.695232°, 79.292422°"
+ },
+ {
+  "number": 197.863,
+  "link": "https://www.google.com/maps/place/ 15.706497°, 79.307283°"
+ },
+ {
+  "number": 197,
+  "link": "https://www.google.com/maps/place/ 79.314094°, 79.315109°"
+ },
+ {
+  "number": 196.091,
+  "link": "https://www.google.com/maps/place/ 15.717087°, 79.321580°"
+ },
+ {
+  "number": 184.18,
+  "link": "https://www.google.com/maps/place/ 15.785889°, 79.397887°"
+ },
+ {
+  "number": 216.496,
+  "link": "https://www.google.com/maps/place/ 15.601175°, 79.180322°"
+ },
+ {
+  "number": 220.392,
+  "link": "https://www.google.com/maps/place/ 15.570489°, 79.157448°"
+ },
+ {
+  "number": 224.094,
+  "link": "https://www.google.com/maps/place/ 15.547381°, 79.132303°"
+ },
+ {
+  "number": 224.716,
+  "link": "https://www.google.com/maps/place/ 15.543745°, 79.128740°"
+ },
+ {
+  "number": 226.286,
+  "link": "https://www.google.com/maps/place/ 15.534635°, 79.118411°"
+ },
+ {
+  "number": 230.814,
+  "link": "https://www.google.com/maps/place/ 15.501778°, 79.092995°"
+ },
+ {
+  "number": 235.138,
+  "link": "https://www.google.com/maps/place/ 15.465357°, 79.078966°"
+ },
+ {
+  "number": 236.421,
+  "link": "https://www.google.com/maps/place/ 15.454216°, 79.075778°"
+ },
+ {
+  "number": 242.192,
+  "link": "https://www.google.com/maps/place/ 15.408247°, 79.050683°"
+ },
+ {
+  "number": 247.2,
+  "link": "https://www.google.com/maps/place/ 15.371397°, 79.033969°"
+ },
+ {
+  "number": 274,
+  "link": "https://www.google.com/maps/place/ 15.126704°, 79.022222°"
+ },
+ {
+  "number": 266.53,
+  "link": "https://www.google.com/maps/place/ 15.194665°, 79.017629°"
+ },
+ {
+  "number": 264.244,
+  "link": "https://www.google.com/maps/place/ 15.215509°, 79.016583°"
+ },
+ {
+  "number": 262.718,
+  "link": "https://www.google.com/maps/place/ 15.229173°, 79.015712°"
+ },
+ {
+  "number": 259.813,
+  "link": "https://www.google.com/maps/place/ 15.255456°, 79.014555°"
+ },
+ {
+  "number": 258.847,
+  "link": "https://www.google.com/maps/place/ 15.264070°, 79.014412°"
+ },
+ {
+  "number": 257.35499999999996,
+  "link": "https://www.google.com/maps/place/ 15.276907°, 79.017210°"
+ },
+ {
+  "number": 257.193,
+  "link": "https://www.google.com/maps/place/ 15.278282°, 79.017447°"
+ },
+ {
+  "number": 256.385,
+  "link": "https://www.google.com/maps/place/ 15.285342°, 79.019388°"
+ },
+ {
+  "number": 256,
+  "link": "https://www.google.com/maps/place/ 15.288726°, 79.019215°"
+ },
+ {
+  "number": 249.89600000000002,
+  "link": "https://www.google.com/maps/place/ 15.340032°, 79.026514°"
+ },
+ {
+  "number": 289.844,
+  "link": "https://www.google.com/maps/place/ 15.007422°, 78.970043°"
+ },
+ {
+  "number": 295.667,
+  "link": "https://www.google.com/maps/place/ 14.966582°, 78.936614°"
+ },
+ {
+  "number": 297.778,
+  "link": "https://www.google.com/maps/place/ 14.957897°, 78.929793°"
+ },
+ {
+  "number": 301.632,
+  "link": "https://www.google.com/maps/place/ 14.923990°, 78.903073°"
+ },
+ {
+  "number": 305.845,
+  "link": "https://www.google.com/maps/place/ 14.892419°, 78.881849°"
+ },
+ {
+  "number": 315.608,
+  "link": "https://www.google.com/maps/place/ 14.861223°, 78.806867°"
+ },
+ {
+  "number": 316.139,
+  "link": "https://www.google.com/maps/place/ 14.857562°, 78.798257°"
+ },
+ {
+  "number": 318.463,
+  "link": "https://www.google.com/maps/place/ 14.844137°, 78.786042°"
+ },
+ {
+  "number": 319.84,
+  "link": "https://www.google.com/maps/place/ 14.832338°, 78.784901°"
+ },
+ {
+  "number": 322.974,
+  "link": "https://www.google.com/maps/place/ 14.805135°, 78.786309°"
+ },
+ {
+  "number": 325.162,
+  "link": "https://www.google.com/maps/place/ 14.785541°, 78.784582°"
+ },
+ {
+  "number": 341.3,
+  "link": "https://www.google.com/maps/place/ 14.638724°, 78.787585°"
+ },
+ {
+  "number": 340.475,
+  "link": "https://www.google.com/maps/place/ 14.645897°, 78.788487°"
+ },
+ {
+  "number": 338.75,
+  "link": "https://www.google.com/maps/place/ 14.659150°, 78.788441°"
+ },
+ {
+  "number": 330.522,
+  "link": "https://www.google.com/maps/place/ 14.728990°, 78.787133°"
+ },
+ {
+  "number": 327.342,
+  "link": "https://www.google.com/maps/place/ 14.753908°, 78.781522°"
+ },
+ {
+  "number": 355.38399999999996,
+  "link": "https://www.google.com/maps/place/ 14.534860°, 78.847005°"
+ },
+ {
+  "number": 360.935,
+  "link": "https://www.google.com/maps/place/ 14.494330°, 78.873349°"
+ },
+ {
+  "number": 361.91499999999996,
+  "link": "https://www.google.com/maps/place/ 14.492316°, 78.881422°"
+ },
+ {
+  "number": 363.64,
+  "link": "https://www.google.com/maps/place/ 14.490734°, 78.896863°"
+ },
+ {
+  "number": 364,
+  "link": "https://www.google.com/maps/place/ 14.486664°, 78.900437°"
+ },
+ {
+  "number": 367.91,
+  "link": "https://www.google.com/maps/place/ 14.464551°, 78.921198°"
+ },
+ {
+  "number": 370.01,
+  "link": "https://www.google.com/maps/place/ 14.461178°, 78.943087°"
+ },
+ {
+  "number": 371.1,
+  "link": "https://www.google.com/maps/place/ 14.460292°, 78.954295°"
+ },
+ {
+  "number": 371.8,
+  "link": "https://www.google.com/maps/place/ 14.459096°, 78.958807°"
+ },
+ {
+  "number": 374.95,
+  "link": "https://www.google.com/maps/place/ 14.439726°, 78.965044°"
+ },
+ {
+  "number": 375.91,
+  "link": "https://www.google.com/maps/place/ 14.423726°, 78.959647°"
+ },
+ {
+  "number": 413.18,
+  "link": "https://www.google.com/maps/place/ 14.291774°, 78.742600°"
+ },
+ {
+  "number": 405.736,
+  "link": "https://www.google.com/maps/place/ 14.331747°, 78.773684°"
+ },
+ {
+  "number": 405.579,
+  "link": "https://www.google.com/maps/place/ 14.332256°, 78.774030°"
+ },
+ {
+  "number": 405.282,
+  "link": "https://www.google.com/maps/place/ 14.335418°, 78.775692°"
+ },
+ {
+  "number": 402.197,
+  "link": "https://www.google.com/maps/place/ 14.360061°, 78.784077°"
+ },
+ {
+  "number": 400.235,
+  "link": "https://www.google.com/maps/place/ 14.374443°, 78.793063°"
+ },
+ {
+  "number": 396.848,
+  "link": "https://www.google.com/maps/place/ 14.392339°, 78.811525°"
+ },
+ {
+  "number": 393.169,
+  "link": "https://www.google.com/maps/place/ 14.424072°, 78.827950°"
+ },
+ {
+  "number": 392.37399999999997,
+  "link": "https://www.google.com/maps/place/ 14.427970°, 78.834040°"
+ },
+ {
+  "number": 388.415,
+  "link": "https://www.google.com/maps/place/ 14.430151°, 78.870048°"
+ },
+ {
+  "number": 416.659,
+  "link": "https://www.google.com/maps/place/ 14.260982°, 78.733912°"
+ },
+ {
+  "number": 417.671,
+  "link": "https://www.google.com/maps/place/ 14.252171°, 78.734093°"
+ },
+ {
+  "number": 418.336,
+  "link": "https://www.google.com/maps/place/ 14.247071°, 78.733509°"
+ },
+ {
+  "number": 420.371,
+  "link": "https://www.google.com/maps/place/ 14.230063°, 78.733734°"
+ },
+ {
+  "number": 422.103,
+  "link": "https://www.google.com/maps/place/ 14.214603°, 78.733382°"
+ },
+ {
+  "number": 423.39,
+  "link": "https://www.google.com/maps/place/ 14.201144°, 78.732108°"
+ },
+ {
+  "number": 423.4,
+  "link": "https://www.google.com/maps/place/ 14.200427°, 78.732041°"
+ },
+ {
+  "number": 425.513,
+  "link": "https://www.google.com/maps/place/ 14.180617°, 78.729958°"
+ },
+ {
+  "number": 425.944,
+  "link": "https://www.google.com/maps/place/ 14.177174°, 78.729815°"
+ },
+ {
+  "number": 429.596,
+  "link": "https://www.google.com/maps/place/ 14.144723°, 78.729803°"
+ },
+ {
+  "number": 430.628,
+  "link": "https://www.google.com/maps/place/ 14.136042°, 78.729886°"
+ },
+ {
+  "number": 431.615,
+  "link": "https://www.google.com/maps/place/ 14.127299°, 78.732650°"
+ },
+ {
+  "number": 432.499,
+  "link": "https://www.google.com/maps/place/ 14.119446°, 78.733245°"
+ },
+ {
+  "number": 433.916,
+  "link": "https://www.google.com/maps/place/ 14.106768°, 78.732770°"
+ },
+ {
+  "number": 436.91,
+  "link": "https://www.google.com/maps/place/ 14.080410°, 78.728234°"
+ },
+ {
+  "number": 438.394,
+  "link": "https://www.google.com/maps/place/ 14.067008°, 78.725552°"
+ },
+ {
+  "number": 461.88100000000003,
+  "link": "https://www.google.com/maps/place/ 13.866532°, 78.732979°"
+ },
+ {
+  "number": 458.923,
+  "link": "https://www.google.com/maps/place/ 13.891418°, 78.736172°"
+ },
+ {
+  "number": 456.465,
+  "link": "https://www.google.com/maps/place/ 13.913889°, 78.737606°"
+ },
+ {
+  "number": 453.455,
+  "link": "https://www.google.com/maps/place/ 13.940211°, 78.741161°"
+ },
+ {
+  "number": 450.80699999999996,
+  "link": "https://www.google.com/maps/place/ 13.963091°, 78.739178°"
+ },
+ {
+  "number": 447.804,
+  "link": "https://www.google.com/maps/place/ 13.988694°, 78.736167°"
+ },
+ {
+  "number": 442.962,
+  "link": "https://www.google.com/maps/place/ 14.029846°, 78.731626°"
+ },
+ {
+  "number": 440.517,
+  "link": "https://www.google.com/maps/place/ 14.048513°, 78.723554°"
+ },
+ {
+  "number": 439.988,
+  "link": "https://www.google.com/maps/place/ 14.054010°, 78.723137°"
+ },
+ {
+  "number": 470.912,
+  "link": "https://www.google.com/maps/place/ 13.788290°, 78.717893°"
+ },
+ {
+  "number": 472.776,
+  "link": "https://www.google.com/maps/place/ 13.772910°, 78.717968°"
+ },
+ {
+  "number": 475.022,
+  "link": "https://www.google.com/maps/place/ 13.752053°, 78.716458°"
+ },
+ {
+  "number": 475.188,
+  "link": "https://www.google.com/maps/place/ 13.751956°, 78.716402°"
+ },
+ {
+  "number": 476.04499999999996,
+  "link": "https://www.google.com/maps/place/ 13.744909°, 78.714259°"
+ },
+ {
+  "number": 476.173,
+  "link": "https://www.google.com/maps/place/ 13.742123°, 78.714101°"
+ },
+ {
+  "number": 480.1,
+  "link": "https://www.google.com/maps/place/ 13.705316°, 78.708254°"
+ },
+ {
+  "number": 481.213,
+  "link": "https://www.google.com/maps/place/ 13.697583°, 78.709226°"
+ },
+ {
+  "number": 484.256,
+  "link": "https://www.google.com/maps/place/ 13.672754°, 78.696665°"
+ },
+ {
+  "number": 484.9359999999999,
+  "link": "https://www.google.com/maps/place/ 13.666780°, 78.697697°"
+ },
+ {
+  "number": 486.86,
+  "link": "https://www.google.com/maps/place/ 13.652071°, 78.691567°"
+ },
+ {
+  "number": 490.169,
+  "link": "https://www.google.com/maps/place/ 13.622267°, 78.681180°"
+ },
+ {
+  "number": 496.652,
+  "link": "https://www.google.com/maps/place/ 13.572935°, 78.655187°"
+ },
+ {
+  "number": 497.677,
+  "link": "https://www.google.com/maps/place/ 13.566327°, 78.649301°"
+ },
+ {
+  "number": 498.892,
+  "link": "https://www.google.com/maps/place/ 13.556974°, 78.645315°"
+ },
+ {
+  "number": 524.394,
+  "link": "https://www.google.com/maps/place/ 13.357637°, 78.609349°"
+ },
+ {
+  "number": 521.2909999999999,
+  "link": "https://www.google.com/maps/place/ 13.383712°, 78.610653°"
+ },
+ {
+  "number": 518.346,
+  "link": "https://www.google.com/maps/place/ 13.409524°, 78.614741°"
+ },
+ {
+  "number": 515.703,
+  "link": "https://www.google.com/maps/place/ 13.435561°, 78.614376°"
+ },
+ {
+  "number": 514.7719999999999,
+  "link": "https://www.google.com/maps/place/ 13.442584°, 78.610991°"
+ },
+ {
+  "number": 510.19999999999993,
+  "link": "https://www.google.com/maps/place/ 13.479259°, 78.623529°"
+ },
+ {
+  "number": 506.63,
+  "link": "https://www.google.com/maps/place/ 13.507570°, 78.612918°"
+ },
+ {
+  "number": 504.998,
+  "link": "https://www.google.com/maps/place/ 13.519159°, 78.611230°"
+ },
+ {
+  "number": 502.361,
+  "link": "https://www.google.com/maps/place/ 13.535282°, 78.627726°"
+ },
+ {
+  "number": 500.183,
+  "link": "https://www.google.com/maps/place/ 13.550037°, 78.636461°"
+ },
+ {
+  "number": 533.638,
+  "link": "https://www.google.com/maps/place/ 13.273775°, 78.594443°"
+ },
+ {
+  "number": 533.9730000000001,
+  "link": "https://www.google.com/maps/place/ 13.270971°, 78.593918°"
+ },
+ {
+  "number": 535.577,
+  "link": "https://www.google.com/maps/place/ 13.257964°, 78.589876°"
+ },
+ {
+  "number": 538.517,
+  "link": "https://www.google.com/maps/place/ 13.233612°, 78.586159°"
+ },
+ {
+  "number": 540.335,
+  "link": "https://www.google.com/maps/place/ 13.219260°, 78.581399°"
+ },
+ {
+  "number": 540.477,
+  "link": "https://www.google.com/maps/place/ 13.218401°, 78.580902°"
+ },
+ {
+  "number": 549.873,
+  "link": "https://www.google.com/maps/place/ 13.137354°, 78.584044°"
+ },
+ {
+  "number": 555.853,
+  "link": "https://www.google.com/maps/place/ 13.095739°, 78.568783°"
+ },
+ {
+  "number": 560.36,
+  "link": "https://www.google.com/maps/place/ 13.070246°, 78.533834°"
+ },
+ {
+  "number": 592.077,
+  "link": "https://www.google.com/maps/place/ 12.846350°, 78.418100°"
+ },
+ {
+  "number": 589.969,
+  "link": "https://www.google.com/maps/place/ 12.854903°, 78.436447°"
+ },
+ {
+  "number": 589.744,
+  "link": "https://www.google.com/maps/place/ 12.855425°, 78.437815°"
+ },
+ {
+  "number": 588.453,
+  "link": "https://www.google.com/maps/place/ 12.861034°, 78.447549°"
+ },
+ {
+  "number": 586.384,
+  "link": "https://www.google.com/maps/place/ 12.864564°, 78.465529°"
+ },
+ {
+  "number": 584.985,
+  "link": "https://www.google.com/maps/place/ 12.869811°, 78.476151°"
+ },
+ {
+  "number": 583.394,
+  "link": "https://www.google.com/maps/place/ 12.882956°, 78.481242°"
+ },
+ {
+  "number": 582.122,
+  "link": "https://www.google.com/maps/place/ 12.893953°, 78.482396°"
+ },
+ {
+  "number": 581.18,
+  "link": "https://www.google.com/maps/place/ 12.901488°, 78.481569°"
+ },
+ {
+  "number": 580.838,
+  "link": "https://www.google.com/maps/place/ 12.902996°, 78.482290°"
+ },
+ {
+  "number": 579.4519999999999,
+  "link": "https://www.google.com/maps/place/ 12.916559°, 78.482594°"
+ },
+ {
+  "number": 578.9709999999999,
+  "link": "https://www.google.com/maps/place/ 12.920488°, 78.483870°"
+ },
+ {
+  "number": 578.675,
+  "link": "https://www.google.com/maps/place/ 12.922931°, 78.484401°"
+ },
+ {
+  "number": 575.259,
+  "link": "https://www.google.com/maps/place/ 12.949040°, 78.493000°"
+ },
+ {
+  "number": 574,
+  "link": "https://www.google.com/maps/place/ 12.959587°, 78.496319°"
+ },
+ {
+  "number": 571.315,
+  "link": "https://www.google.com/maps/place/ 12.985966°, 78.502952°"
+ },
+ {
+  "number": 569.908,
+  "link": "https://www.google.com/maps/place/ 12.996734°, 78.509092°"
+ },
+ {
+  "number": 569.884,
+  "link": "https://www.google.com/maps/place/ 12.996837°, 78.509109°"
+ },
+ {
+  "number": 568.983,
+  "link": "https://www.google.com/maps/place/ 13.005118°, 78.510719°"
+ },
+ {
+  "number": 566.416,
+  "link": "https://www.google.com/maps/place/ 13.026641°, 78.518523°"
+ },
+ {
+  "number": 566.369,
+  "link": "https://www.google.com/maps/place/ 13.026966°, 78.518708°"
+ },
+ {
+  "number": 563.538,
+  "link": "https://www.google.com/maps/place/ 13.049628°, 78.529313°"
+ },
+ {
+  "number": 596.082,
+  "link": "https://www.google.com/maps/place/ 12.823301°, 78.392247°"
+ },
+ {
+  "number": 596.168,
+  "link": "https://www.google.com/maps/place/ 12.822362°, 78.391596°"
+ },
+ {
+  "number": 596.444,
+  "link": "https://www.google.com/maps/place/ 12.820774°, 78.390244°"
+ },
+ {
+  "number": 596.664,
+  "link": "https://www.google.com/maps/place/12.819331°, 78.389031°"
+ },
+ {
+  "number": 599.066,
+  "link": "https://www.google.com/maps/place/ 12.800916°, 78.379509°"
+ },
+ {
+  "number": 603.653,
+  "link": "https://www.google.com/maps/place/ 12.764851°, 78.363682°"
+ },
+ {
+  "number": 604.794,
+  "link": "https://www.google.com/maps/place/ 12.755163°, 78.359982°"
+ },
+ {
+  "number": 605.725,
+  "link": "https://www.google.com/maps/place/ 12.746187°, 78.358640°"
+ },
+ {
+  "number": 609.037,
+  "link": "https://www.google.com/maps/place/ 12.721487°, 78.364850°"
+ },
+ {
+  "number": 609.182,
+  "link": "https://www.google.com/maps/place/ 12.720523°, 78.364224°"
+ },
+ {
+  "number": 609.531,
+  "link": "https://www.google.com/maps/place/ 12.717798°, 78.362235°"
+ },
+ {
+  "number": 610.815,
+  "link": "https://www.google.com/maps/place/ 12.708417°, 78.355462°"
+ },
+ {
+  "number": 612.373,
+  "link": "https://www.google.com/maps/place/ 12.696230°, 78.349290°"
+ },
+ {
+  "number": 613.6320000000001,
+  "link": "https://www.google.com/maps/place/ 12.687094°, 78.342868°"
+ },
+ {
+  "number": 642.114,
+  "link": "https://www.google.com/maps/place/ 12.500047°, 78.223079°"
+ },
+ {
+  "number": 669.5,
+  "link": "https://www.google.com/maps/place/ 12.267718°, 78.196359°"
+ },
+ {
+  "number": 682.25,
+  "link": "https://www.google.com/maps/place/ 12.165234°, 78.162393°"
+ },
+ {
+  "number": 689.068,
+  "link": "https://www.google.com/maps/place/ 12.115945°, 78.131939°"
+ }
+
+]
+;
+
+        function findLinks() {
+            // Get the input value
+            const inputValue = parseFloat(document.getElementById('decimalInput').value);
+
+            // Find the closest number in the data
+            const closestEntry = data.reduce((prev, curr) => {
+                return (Math.abs(curr.number - inputValue) < Math.abs(prev.number - inputValue) ? curr : prev);
+            });
+
+            // Display links within a range of +/- 2
+            const linksInRange = data.filter(entry => entry.number >= closestEntry.number - 2 && entry.number <= closestEntry.number + 2);
+
+            // Display the result
+            displayResult(linksInRange);
+        }
+
+        function displayResult(links) {
+            const resultContainer = document.getElementById('result');
+            resultContainer.innerHTML = "<h3>Result:</h3>";
+
+            if (links.length === 0) {
+                resultContainer.innerHTML += "<p>No links found within the specified range.</p>";
+            } else {
+                links.forEach(entry => {
+                    resultContainer.innerHTML += `<p>${entry.number}: <a href="${entry.link}" target="_blank">${entry.link}</a></p>`;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
 
