@@ -33,7 +33,7 @@ db.once("open", function () {
 
 const app = express();
 
-const constants = {defaultPassword:"Hpcl#2402",supPassword:"Hpcl#123",Chainagelimit:2}
+const constants = {defaultPassword:"asnoasnoianfoinfo",supPassword:"dsjfnsodfoifnoifndsoifndo",Chainagelimit:2}
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}))
